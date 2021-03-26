@@ -1,25 +1,44 @@
 
 // Variables
+let isRecording = false;
 const buttons = document.querySelectorAll('#set > button');
 const recBtn = document.querySelector('#rec');
 const playBtn = document.querySelector('#play');
 const recording = [];
-let isRecording = false;
-let hasFired = false;
+const keyStatus = {
+	w: {
+		isPressed: false
+	},
+	a: {
+		isPressed: false
+	},
+	s: {
+		isPressed: false
+	},	
+	d: {
+		isPressed: false
+	},
+	j: {
+		isPressed: false
+	},
+	k: {
+		isPressed: false
+	},
+	l: {
+		isPressed: false
+	}
+}
 
 
 // Event listeners
 document.addEventListener('keydown', (evt) => {
-	if (!hasFired) {
-		if (/[wasdjklWASDJKL]/.test(evt.key)){
-			handler(evt.key.toLowerCase());
-			hasFired = true;
-		}
-	}
+	keyPressed(evt.key);
 })
 
-document.addEventListener('keyup', () => hasFired = false);
-
+document.addEventListener('keyup', (evt) => {
+	keyPressed(evt.key);
+	keyStatus[evt.key].isPressed = false;
+})
 
 for (let btn of buttons) {
 	btn.addEventListener('click', (evt) => handler(evt.currentTarget.id))
@@ -31,6 +50,14 @@ playBtn.addEventListener('click', playRecording);
 
 
 // Functions
+function keyPressed(key) {
+	if (/[wasdjklWASDJKL]/.test(key)) {
+		if (!keyStatus[key].isPressed){
+			handler(key.toLowerCase());
+			keyStatus[key].isPressed = true;
+		}
+	}
+}
 
 function record() {
 	(isRecording) ? isRecording = false : isRecording = true;
