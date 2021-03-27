@@ -60,6 +60,7 @@ function keyboardEventHandler(evt) {
 
 function record() {
 	(isRecording) ? isRecording = false : isRecording = true;
+	if (recording.length !== 0) recording.length = 0;
 	recBtn.classList.toggle('pressed');
 	playBtn.disabled = false;
 }
