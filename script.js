@@ -19,15 +19,15 @@ const pressedKeys = {
 
 // Event listeners
 document.addEventListener('keydown', (evt) => {
-	if (/[wasdjklWASDJKL]/.test(evt.key)) keyboardEventHandler(evt);
+	if (/[wasdjklWASDJKL]/.test(evt.key)) eventHandler(evt);
 })
 
 document.addEventListener('keyup', (evt) => {
-	if (/[wasdjklWASDJKL]/.test(evt.key)) keyboardEventHandler(evt);
+	if (/[wasdjklWASDJKL]/.test(evt.key)) eventHandler(evt);
 })
 
 for (let btn of buttons) {
-	btn.addEventListener('click', (evt) => playSound(evt.currentTarget.id))
+	btn.addEventListener('click', (evt) => eventHandler(evt))
 }
  
 recBtn.addEventListener('click', record);
@@ -37,10 +37,17 @@ playBtn.addEventListener('click', playRecording);
 
 
 // Functions
-function keyboardEventHandler(evt) {
+function eventHandler(evt) {
 
-	const {type, key} = evt;
+	const {type, key, currentTarget} = evt;
 	switch (type) {
+
+		case 'click': {
+			if (!pressedKeys[currentTarget.id]) {
+				playSound(currentTarget.id);
+			}
+			break;
+		}
 
 		case 'keydown': {
 			if (!pressedKeys[key]) {
