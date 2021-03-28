@@ -1,10 +1,11 @@
 
 // Variables
+let playback = [];
 let isRecording = false;
+const recording = [];
 const buttons = document.querySelectorAll('#set > button');
 const recBtn = document.querySelector('#rec');
 const playBtn = document.querySelector('#play');
-const recording = [];
 const pressedKeys = {
 	w: false,
 	a: false,
@@ -29,7 +30,7 @@ document.addEventListener('keyup', (evt) => {
 for (let btn of buttons) {
 	btn.addEventListener('click', (evt) => eventHandler(evt))
 }
- 
+
 recBtn.addEventListener('click', record);
 
 playBtn.addEventListener('click', playRecording);
@@ -39,7 +40,7 @@ playBtn.addEventListener('click', playRecording);
 // Functions
 function eventHandler(evt) {
 
-	const {type, key, currentTarget} = evt;
+	const {type, key, currentTarget, timeStamp} = evt;
 	switch (type) {
 
 		case 'click': {
@@ -53,6 +54,11 @@ function eventHandler(evt) {
 			if (!pressedKeys[key]) {
 				playSound(key)
 				pressedKeys[key] = true;
+				if (isRecording) {
+					const sound = {key, timeStamp: ~~timeStamp};
+					recording.push(sound);
+					console.log(JSON.stringify(recording, null, 2));
+				}
 			}
 			break;
 		}
@@ -66,21 +72,41 @@ function eventHandler(evt) {
 
 
 function record() {
-	(isRecording) ? isRecording = false : isRecording = true;
-	if (recording.length !== 0) recording.length = 0;
-	recBtn.classList.toggle('pressed');
-	playBtn.disabled = false;
+
+	if (isRecording) {
+		recBtn.classList.toggle('pressed');
+		isRecording = false;
+
+		// Creating array for playback without the initial setTimeout delay while preserving the time differences between the events' time stamps.
+		// if statement to avoid enabling play button if user records no sound in between toggling of REC button.
+		if (recording.length !== 0) {
+			playback = [...recording];
+			for (let i = 1; i < playback.length; i++) {
+				playback[i].timeStamp = playback[i].timeStamp - playback[0].timeStamp;
+			}
+			playback[0].timeStamp = 0;
+			console.log(JSON.stringify(playback, null, 2));
+			playBtn.disabled = false;
+		}
+		
+	} else {
+		if (recording.length !== 0) recording.length = 0;
+		if (!playBtn.disabled) playBtn.disabled = true;
+		recBtn.classList.toggle('pressed');
+		isRecording = true;
+	}
 }
 
 
 function playRecording() {
-	isRecording = false;
-	recBtn.classList.remove('pressed');
-	const tempRecording = [...recording];
-	const playbackInterval = setInterval(() => {
-		playSound(tempRecording.shift());
-		if (tempRecording.length === 0) clearInterval(playbackInterval);
-	}, 250)
+
+	// Replaying the sounds with the adjusted time stamps.
+	for (let sound of playback) {
+		setTimeout(() => {
+			playSound(sound.key);
+		}, sound.timeStamp);
+	}
+	console.log(JSON.stringify(playback,null,2));
 }
 
 
@@ -134,7 +160,7 @@ function playSound(Key) {
 	audio.play();
 
 	// Saving keys into the saved recording
-	if (isRecording) {
-		recording.push(key);
-	}
+	// if (isRecording) {
+	// 	recording.push(key);
+	// }
 }
