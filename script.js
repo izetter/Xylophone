@@ -41,11 +41,18 @@ playBtn.addEventListener('click', playRecording);
 function eventHandler(evt) {
 
 	const {type, key, currentTarget, timeStamp} = evt;
+	const {id} = currentTarget;
 	switch (type) {
 
 		case 'click': {
-			if (!pressedKeys[currentTarget.id]) {
-				playSound(currentTarget.id);
+			// The outer if statement here is to prevent 'click' while 'keydown' is happening.
+			if (!pressedKeys[id]) {
+				playSound(id);
+				if (isRecording) {
+					const sound = {key: id, timeStamp};
+					recording.push(sound);
+					console.log(JSON.stringify(recording, null, 2));
+				}
 			}
 			break;
 		}
@@ -55,7 +62,7 @@ function eventHandler(evt) {
 				playSound(key)
 				pressedKeys[key] = true;
 				if (isRecording) {
-					const sound = {key, timeStamp: ~~timeStamp};
+					const sound = {key, timeStamp};
 					recording.push(sound);
 					console.log(JSON.stringify(recording, null, 2));
 				}
@@ -77,12 +84,12 @@ function record() {
 		recBtn.classList.toggle('pressed');
 		isRecording = false;
 
-		// Creating array for playback without the initial setTimeout delay while preserving the time differences between the events' time stamps.
+		// Creating array for playback without the initial delay from the original timeStamp while preserving the time differences between the events' original time stamps.
 		// if statement to avoid enabling play button if user records no sound in between toggling of REC button.
 		if (recording.length !== 0) {
 			playback = [...recording];
 			for (let i = 1; i < playback.length; i++) {
-				playback[i].timeStamp = playback[i].timeStamp - playback[0].timeStamp;
+				playback[i].timeStamp -= playback[0].timeStamp;
 			}
 			playback[0].timeStamp = 0;
 			console.log(JSON.stringify(playback, null, 2));
@@ -99,8 +106,6 @@ function record() {
 
 
 function playRecording() {
-
-	// Replaying the sounds with the adjusted time stamps.
 	for (let sound of playback) {
 		setTimeout(() => {
 			playSound(sound.key);
@@ -158,9 +163,4 @@ function playSound(Key) {
 		}
 	} 
 	audio.play();
-
-	// Saving keys into the saved recording
-	// if (isRecording) {
-	// 	recording.push(key);
-	// }
 }
