@@ -3,28 +3,20 @@
 let playback = [];
 let isRecording = false;
 const recording = [];
+const pressedKeys = {};
 const buttons = document.querySelectorAll('#set > button');
 const recBtn = document.querySelector('#rec');
 const playBtn = document.querySelector('#play');
-const pressedKeys = {
-	w: false,
-	a: false,
-	s: false,
-	d: false,
-	j: false,
-	k: false,
-	l: false
-}
 
 
 
 // Event listeners
 document.addEventListener('keydown', (evt) => {
-	if (/[wasdjklWASDJKL]/.test(evt.key)) eventHandler(evt);
+	if (/[QWERTYUIOP]/i.test(evt.key) && evt.key.length === 1) eventHandler(evt);
 })
 
 document.addEventListener('keyup', (evt) => {
-	if (/[wasdjklWASDJKL]/.test(evt.key)) eventHandler(evt);
+	if (/[QWERTYUIOP]/i.test(evt.key) && evt.key.length === 1) eventHandler(evt);
 })
 
 for (let btn of buttons) {
@@ -51,7 +43,6 @@ function eventHandler(evt) {
 				if (isRecording) {
 					const sound = {key: id, timeStamp};
 					recording.push(sound);
-					console.log(JSON.stringify(recording, null, 2));
 				}
 			}
 			break;
@@ -64,7 +55,6 @@ function eventHandler(evt) {
 				if (isRecording) {
 					const sound = {key, timeStamp};
 					recording.push(sound);
-					console.log(JSON.stringify(recording, null, 2));
 				}
 			}
 			break;
@@ -92,7 +82,6 @@ function record() {
 				playback[i].timeStamp -= playback[0].timeStamp;
 			}
 			playback[0].timeStamp = 0;
-			console.log(JSON.stringify(playback, null, 2));
 			playBtn.disabled = false;
 		}
 		
@@ -111,12 +100,11 @@ function playRecording() {
 			playSound(sound.key);
 		}, sound.timeStamp);
 	}
-	console.log(JSON.stringify(playback,null,2));
 }
 
 
 function playSound(Key) {
-	let key = Key.toLowerCase();
+	let key = Key.toUpperCase();
 
 	// Button animation
 	let btn = document.querySelector(`#${key}`);
@@ -127,40 +115,59 @@ function playSound(Key) {
 	let audio;
 	switch (key) {
 
-		case 'w': {
-			audio = new Audio('./sounds/crash.mp3');
+		case 'Q': {
+			audio = new Audio('./sounds/C4.wav');
 			break;
 		}
 
-		case 'a': {
-			audio = new Audio('./sounds/kick-bass.mp3');
+		case 'W': {
+			audio = new Audio('./sounds/D4.wav');
 			break;
 		}
 
-		case 's': {
-			audio = new Audio('./sounds/snare.mp3');
+		case 'E': {
+			audio = new Audio('./sounds/E4.wav');
 			break;
 		}
 
-		case 'd': {
-			audio = new Audio('./sounds/tom-1.mp3');
+		case 'R': {
+			audio = new Audio('./sounds/F4.wav');
 			break;
 		}
 
-		case 'j': {
-			audio = new Audio('./sounds/tom-2.mp3');
+		case 'T': {
+			audio = new Audio('./sounds/G4.wav');
 			break;
 		}
 
-		case 'k': {
-			audio = new Audio('./sounds/tom-3.mp3');
+		case 'Y': {
+			audio = new Audio('./sounds/A4.wav');
 			break;
 		}
 
-		case 'l': {
-			audio = new Audio('./sounds/tom-4.mp3');
+		case 'U': {
+			audio = new Audio('./sounds/B4.wav');
 			break;
 		}
+
+		case 'I': {
+			audio = new Audio('./sounds/C5.wav');
+			break;
+		}
+
+		case 'O': {
+			audio = new Audio('./sounds/D5.wav');
+			break;
+		}
+
+		case 'P': {
+			audio = new Audio('./sounds/E5.wav');
+			break;
+		}
+
+
+
+
 	} 
 	audio.play();
 }
