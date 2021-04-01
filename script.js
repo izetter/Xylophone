@@ -59,7 +59,7 @@ playSound() function. 'Q' would become 'KeyQ' no matter if caps was on or off. J
 
 */
 
-	const {type, code, currentTarget, timeStamp} = evt;
+	const {type, key, currentTarget, timeStamp} = evt;
 	const {id} = currentTarget;
 	switch (type) {
 
@@ -68,7 +68,7 @@ playSound() function. 'Q' would become 'KeyQ' no matter if caps was on or off. J
 			if (!pressedKeys[id]) {
 				playSound(id);
 				if (isRecording) {
-					const sound = {code: id, timeStamp};
+					const sound = {Key: id, timeStamp};
 					recording.push(sound);
 				}
 			}
@@ -76,11 +76,12 @@ playSound() function. 'Q' would become 'KeyQ' no matter if caps was on or off. J
 		}
 
 		case 'keydown': {
-			if (!pressedKeys[code]) {
-				playSound(code)
-				pressedKeys[code] = true;
+			let Key = key.toUpperCase();
+			if (!pressedKeys[Key]) {
+				playSound(Key)
+				pressedKeys[Key] = true;
 				if (isRecording) {
-					const sound = {code, timeStamp};
+					const sound = {Key, timeStamp};
 					recording.push(sound);
 				}
 			}
@@ -88,7 +89,8 @@ playSound() function. 'Q' would become 'KeyQ' no matter if caps was on or off. J
 		}
 
 		case 'keyup': {
-			pressedKeys[code] = false;
+			let Key = key.toUpperCase();
+			pressedKeys[Key] = false;
 			break;
 		}
 	}
@@ -124,69 +126,69 @@ function record() {
 function playRecording() {
 	for (let sound of playback) {
 		setTimeout(() => {
-			playSound(sound.code);
+			playSound(sound.Key);
 		}, sound.timeStamp);
 	}
 }
 
 
-function playSound(code) {
+function playSound(Key) {
 
 	// Button animation
-	let btn = document.querySelector(`#${code}`);
+	let btn = document.querySelector(`#${Key}`);
 	btn.classList.add('pressed');
 	setTimeout(() => btn.classList.remove('pressed'), 100);
 
 	// Audio playback
 	let audio;
-	switch (code) {
+	switch (Key) {
 
-		case 'KeyQ': {
+		case 'Q': {
 			audio = new Audio('./sounds/C4.wav');
 			break;
 		}
 
-		case 'KeyW': {
+		case 'W': {
 			audio = new Audio('./sounds/D4.wav');
 			break;
 		}
 
-		case 'KeyE': {
+		case 'E': {
 			audio = new Audio('./sounds/E4.wav');
 			break;
 		}
 
-		case 'KeyR': {
+		case 'R': {
 			audio = new Audio('./sounds/F4.wav');
 			break;
 		}
 
-		case 'KeyT': {
+		case 'T': {
 			audio = new Audio('./sounds/G4.wav');
 			break;
 		}
 
-		case 'KeyY': {
+		case 'Y': {
 			audio = new Audio('./sounds/A4.wav');
 			break;
 		}
 
-		case 'KeyU': {
+		case 'U': {
 			audio = new Audio('./sounds/B4.wav');
 			break;
 		}
 
-		case 'KeyI': {
+		case 'I': {
 			audio = new Audio('./sounds/C5.wav');
 			break;
 		}
 
-		case 'KeyO': {
+		case 'O': {
 			audio = new Audio('./sounds/D5.wav');
 			break;
 		}
 
-		case 'KeyP': {
+		case 'P': {
 			audio = new Audio('./sounds/E5.wav');
 			break;
 		}
