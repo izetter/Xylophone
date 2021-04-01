@@ -32,6 +32,33 @@ playBtn.addEventListener('click', playRecording);
 // Functions
 function eventHandler(evt) {
 
+/*
+
+THIS FUNCTION ACHIEVES THE FOLLOWING WANTED BEHAVIOR:
+
+If the user holds down a keyboard key -thus playing the corresponding sound once-, do not allow that same sound/animation to be played again until the user releases the key. 
+
+Neither by allowing the keydown event code to execute more than once before a keyup event occurs, nor by the user "doubling down" on a Xylophone key by using a different input method.
+i.e. the user clicking on a button while the corresponding keyboard key is being held down. (same thing when holding a tap on a button on screen).
+
+
+FUNCTION CODE NOTES:
+Notice the "key" property being destructured "outside" before switching by the type of event even though click events do not contain a "key" property. This does not throw errors because
+although on click events "key" is initialized to undefined, "key" is not referenced/used at all unless there's a keyboard event, in which case "key" is of course not undefined!
+
+Conversely, let Key = key.toUpperCase(); is referencing the "key" property! so it has to be placed within keydown/keyup cases because if done outside it would throw an exception when click events occur!
+(you cannot upper case an undefined...)
+
+The uppercasing of the value of "key" is done so that the objects pushed into the pressedKeys array contain only upper case values in their "Key" property, and thus preventing "false positives"
+due to different casing when checking if a keyboard key is pressed no matter if the user's caps lock is on or not.
+
+
+CONSIDER REFACTOR:
+Using evt.code instead of event.key would eliminate the need of uppercasing. It would require to change the ids of the html button elements and the cases of the switch statement of the
+playSound() function. 'Q' would become 'KeyQ' no matter if caps was on or off. Just note that event.code may return unwanted values on other keyboard layouts, so in such case re read the docs.
+
+*/
+
 	const {type, key, currentTarget, timeStamp} = evt;
 	const {id} = currentTarget;
 	switch (type) {
@@ -41,7 +68,7 @@ function eventHandler(evt) {
 			if (!pressedKeys[id]) {
 				playSound(id);
 				if (isRecording) {
-					const sound = {key: id, timeStamp};
+					const sound = {Key: id, timeStamp};
 					recording.push(sound);
 				}
 			}
@@ -49,11 +76,12 @@ function eventHandler(evt) {
 		}
 
 		case 'keydown': {
-			if (!pressedKeys[key]) {
-				playSound(key)
-				pressedKeys[key] = true;
+			let Key = key.toUpperCase();
+			if (!pressedKeys[Key]) {
+				playSound(Key)
+				pressedKeys[Key] = true;
 				if (isRecording) {
-					const sound = {key, timeStamp};
+					const sound = {Key, timeStamp};
 					recording.push(sound);
 				}
 			}
@@ -61,7 +89,8 @@ function eventHandler(evt) {
 		}
 
 		case 'keyup': {
-			pressedKeys[key] = false;
+			let Key = key.toUpperCase();
+			pressedKeys[Key] = false;
 			break;
 		}
 	}
@@ -97,23 +126,22 @@ function record() {
 function playRecording() {
 	for (let sound of playback) {
 		setTimeout(() => {
-			playSound(sound.key);
+			playSound(sound.Key);
 		}, sound.timeStamp);
 	}
 }
 
 
 function playSound(Key) {
-	let key = Key.toUpperCase();
 
 	// Button animation
-	let btn = document.querySelector(`#${key}`);
+	let btn = document.querySelector(`#${Key}`);
 	btn.classList.add('pressed');
 	setTimeout(() => btn.classList.remove('pressed'), 100);
 
 	// Audio playback
 	let audio;
-	switch (key) {
+	switch (Key) {
 
 		case 'Q': {
 			audio = new Audio('./sounds/C4.wav');
@@ -164,10 +192,6 @@ function playSound(Key) {
 			audio = new Audio('./sounds/E5.wav');
 			break;
 		}
-
-
-
-
 	} 
 	audio.play();
 }
