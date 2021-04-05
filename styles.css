@@ -1,6 +1,6 @@
 body {
 	text-align: center;
-	background-color: #283149;
+	/* background-color: #283149; */
 }
 
 h1 {
@@ -8,27 +8,64 @@ h1 {
 	color: #DBEDF3;
 	font-family: "Arvo", cursive;
 	text-shadow: 3px 0 #DA0463;
-	margin-top: 5%;
-	margin-bottom: 8%;
+	display: inline-block;
+	vertical-align: super;
+	/* margin: 0; */
+	margin-top: 3%;
+	/* margin-bottom: 8%; */
 }
 
-#set > button {
-	outline: none;
-	border: 10px solid #404B69;
-	font-size: 4rem;
-	font-family: 'Arvo', cursive;
-	line-height: 2;
-	font-weight: 900;
-	color: #DA0463;
-	text-shadow: 3px 0 #DBEDF3;
-	border-radius: 15px;
-	display: inline-block;
-	width: 150px;
-	height: 150px;
-	text-align: center;
-	margin: 10px;
-	background-image: url('./images/t1.jpg');
+header {
+	/* display: flex; */
 }
+
+#buttons {
+	display: inline-block;
+	margin-left: 50px;
+}
+
+#rec,
+#play {
+	width: 70px;
+	height: 50px;
+}
+
+#sample {
+	height: 45px;
+	display: block;
+	margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+#set > button {
+	height: 400px;
+	width: 100px;
+	/* background-image: url("./images/t2.jpg"); */
+	background-repeat: round;
+	border-style: none;
+	border-radius: 6px;
+	outline: none;
+	filter: brightness(0.45) saturate(5);
+	box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+
+
+
+
+
 
 .pressed {
 	box-shadow: 0 3px 4px 0 #DBEDF3;
@@ -38,9 +75,3 @@ h1 {
 }
 
 
-#rec,
-#play {
-	margin-top: 20px;
-	width: 70px;
-	height: 50px;
-}
