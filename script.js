@@ -4,13 +4,96 @@ let playback = [];
 let isRecording = false;
 const recording = [];
 const pressedKeys = {};
-const buttons = document.querySelectorAll('#set > button');
+const keys = document.querySelectorAll('.key');
+const helpBtn = document.querySelector('#help');
 const recBtn = document.querySelector('#rec');
 const playBtn = document.querySelector('#play');
+const playSampleMelodyBtn = document.querySelector('#sample');
+const keyboardToXylophoneRefs = document.querySelectorAll('.key > p');
+
+const sampleMelodyMarimba = [
+    {
+        Key: "E",
+        timeStamp: 0
+    },
+    {
+        Key: "Q",
+        timeStamp: 167
+    },
+    {
+        Key: "Y",
+        timeStamp: 334
+    },
+    {
+        Key: "P",
+        timeStamp: 335
+    },
+    {
+        Key: "Q",
+        timeStamp: 501
+    },
+    {
+        Key: "T",
+        timeStamp: 668
+    },
+    {
+        Key: "Y",
+        timeStamp: 835
+    },
+    {
+        Key: "P",
+        timeStamp: 836
+    },
+    {
+        Key: "T",
+        timeStamp: 1002
+    },
+    {
+        Key: "Q",
+        timeStamp: 1169
+    },
+    {
+        Key: "Y",
+        timeStamp: 1336
+    },
+    {
+        Key: "P",
+        timeStamp: 1337
+    },
+    {
+        Key: "I",
+        timeStamp: 1509
+    },
+    {
+        Key: "T",
+        timeStamp: 1510
+    },
+    {
+        Key: "Q",
+        timeStamp: 1670
+    },
+    {
+        Key: "T",
+        timeStamp: 1837
+    },
+    {
+        Key: "I",
+        timeStamp: 1838
+    }
+];
 
 
 
 // Event listeners
+
+// playSampleMelodyBtn.addEventListener('click', () =>)
+
+helpBtn.addEventListener('click', () => {
+	for (let element of keyboardToXylophoneRefs) {
+		element.classList.toggle('hidden');
+	}
+})
+
 document.addEventListener('keydown', (evt) => {
 	if (/[QWERTYUIOP]/i.test(evt.key) && evt.key.length === 1) eventHandler(evt);
 })
@@ -19,8 +102,8 @@ document.addEventListener('keyup', (evt) => {
 	if (/[QWERTYUIOP]/i.test(evt.key) && evt.key.length === 1) eventHandler(evt);
 })
 
-for (let btn of buttons) {
-	btn.addEventListener('click', (evt) => eventHandler(evt))
+for (let key of keys) {
+	key.addEventListener('click', (evt) => eventHandler(evt))
 }
 
 recBtn.addEventListener('click', record);
@@ -103,7 +186,7 @@ function record() {
 		recBtn.classList.toggle('pressed');
 		isRecording = false;
 
-		// Creating array for playback without the initial delay from the original timeStamp while preserving the time differences between the events' original time stamps.
+		// Creating playback array that is without the initial delay from the original timeStamp while preserving the time differences between the events' original time stamps.
 		// if statement to avoid enabling play button if user records no sound in between toggling of REC button.
 		if (recording.length !== 0) {
 			playback = [...recording];
@@ -124,6 +207,7 @@ function record() {
 
 
 function playRecording() {
+	console.log(playback);
 	for (let sound of playback) {
 		setTimeout(() => {
 			playSound(sound.Key);
@@ -144,52 +228,52 @@ function playSound(Key) {
 	switch (Key) {
 
 		case 'Q': {
-			audio = new Audio('./sounds/C4.wav');
+			audio = new Audio('./sounds/G3.wav');
 			break;
 		}
 
 		case 'W': {
-			audio = new Audio('./sounds/D4.wav');
+			audio = new Audio('./sounds/A3.wav');
 			break;
 		}
 
 		case 'E': {
-			audio = new Audio('./sounds/E4.wav');
+			audio = new Audio('./sounds/B3.wav');
 			break;
 		}
 
 		case 'R': {
-			audio = new Audio('./sounds/F4.wav');
+			audio = new Audio('./sounds/C4.wav');
 			break;
 		}
 
 		case 'T': {
-			audio = new Audio('./sounds/G4.wav');
+			audio = new Audio('./sounds/D4.wav');
 			break;
 		}
 
 		case 'Y': {
-			audio = new Audio('./sounds/A4.wav');
+			audio = new Audio('./sounds/E4.wav');
 			break;
 		}
 
 		case 'U': {
-			audio = new Audio('./sounds/B4.wav');
+			audio = new Audio('./sounds/F4.wav');
 			break;
 		}
 
 		case 'I': {
-			audio = new Audio('./sounds/C5.wav');
+			audio = new Audio('./sounds/G4.wav');
 			break;
 		}
 
 		case 'O': {
-			audio = new Audio('./sounds/D5.wav');
+			audio = new Audio('./sounds/A4.wav');
 			break;
 		}
 
 		case 'P': {
-			audio = new Audio('./sounds/E5.wav');
+			audio = new Audio('./sounds/B4.wav');
 			break;
 		}
 	} 

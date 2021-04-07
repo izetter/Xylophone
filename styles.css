@@ -10,18 +10,22 @@ h1 {
 	text-shadow: 3px 0 #DA0463;
 	display: inline-block;
 	vertical-align: super;
-	/* margin: 0; */
 	margin-top: 3%;
-	/* margin-bottom: 8%; */
-}
-
-header {
-	/* display: flex; */
 }
 
 #buttons {
 	display: inline-block;
 	margin-left: 50px;
+}
+
+#sample {
+	height: 45px;
+	margin-bottom: 10px;
+}
+
+#help {
+	width: 40px;
+	height: 40px;
 }
 
 #rec,
@@ -30,23 +34,29 @@ header {
 	height: 50px;
 }
 
-#sample {
-	height: 45px;
-	display: block;
-	margin-bottom: 10px;
+
+
+
+#naturals {
+	display: flex;
+	justify-content: center;
+	height: 50vh;
+	/* max-height: 540px; */
+	margin-top: 20VH;
+	/* border: solid 1px red; */
+}
+
+#sharps {
+	/* border: solid 1px blue; */
 }
 
 
 
-
-
-
-
-
-
-#set > button {
-	height: 400px;
-	width: 100px;
+.key {
+	/* display: inline-block; */
+	display: flex;
+	flex-direction:	column-reverse;
+	width: 90px;
 	/* background-image: url("./images/t2.jpg"); */
 	background-repeat: round;
 	border-style: none;
@@ -54,17 +64,20 @@ header {
 	outline: none;
 	filter: brightness(0.45) saturate(5);
 	box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.2);
+	/* position: relative; */
+	margin-left: 4px;
+	margin-right: 4px;
 }
 
 
+.key > p {
+	font-size: 2.5rem;
+	margin-bottom: 20%;
+}
 
-
-
-
-
-
-
-
+.hidden {
+	display: none;
+}
 
 
 .pressed {
@@ -73,5 +86,143 @@ header {
 	transform: scale(1.1);
 	transition: all .2s ease-in-out;
 }
+
+
+#Q {
+	height: 100%;
+}
+
+#W {
+	height: 95%;
+}
+
+#E {
+	height: 90%;
+}
+
+#R {
+	height: 85%;
+}
+
+#T {
+	height: 80%;
+}
+
+#Y {
+	height: 75%;
+}
+
+#U {
+	height: 70%;
+}
+
+#I {
+	height: 65%;
+}
+
+#O {
+	height: 60%;
+}
+
+#P {
+	height: 55%;
+}
+
+
+
+
+
+
+
+
+
+/* .94 de anterior */
+
+/* 
+#Q {
+	height: 100%;
+}
+
+#W {
+	height: 94%;
+}
+
+#E {
+	height: 88.4%;
+}
+
+#R {
+	height: 83.1%;
+}
+
+#T {
+	height: 78.1%;
+}
+
+#Y {
+	height: 73.4%;
+}
+
+#U {
+	height: 69%;
+}
+
+#I {
+	height: 64.8%;
+}
+
+#O {
+	height: 61%;
+}
+
+#P {
+	height: 57.3%;
+}
+*/
+
+
+/* .95 de anterior */
+
+/* 
+#Q {
+	height: 100%;
+}
+
+#W {
+	height: 95%;
+}
+
+#E {
+	height: 90.3%;
+}
+
+#R {
+	height: 85.7%;
+}
+
+#T {
+	height: 81.5%;
+}
+
+#Y {
+	height: 77.4%;
+}
+
+#U {
+	height: 73.3%;
+}
+
+#I {
+	height: 69.8%;
+}
+
+#O {
+	height: 66.3%;
+}
+
+#P {
+	height: 63%;
+} 
+*/
 
 
