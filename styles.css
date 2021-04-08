@@ -88,45 +88,53 @@ h1 {
 }
 
 
-#Q {
+#KeyQ {
 	height: 100%;
 }
 
-#W {
+#KeyW {
 	height: 95%;
 }
 
-#E {
+#KeyE {
 	height: 90%;
 }
 
-#R {
+#KeyR {
 	height: 85%;
 }
 
-#T {
+#KeyT {
 	height: 80%;
 }
 
-#Y {
+#KeyY {
 	height: 75%;
 }
 
-#U {
+#KeyU {
 	height: 70%;
 }
 
-#I {
+#KeyI {
 	height: 65%;
 }
 
-#O {
+#KeyO {
 	height: 60%;
 }
 
-#P {
+#KeyP {
 	height: 55%;
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -139,43 +147,43 @@ h1 {
 /* .94 de anterior */
 
 /* 
-#Q {
+#KeyQ {
 	height: 100%;
 }
 
-#W {
+#KeyW {
 	height: 94%;
 }
 
-#E {
+#KeyE {
 	height: 88.4%;
 }
 
-#R {
+#KeyR {
 	height: 83.1%;
 }
 
-#T {
+#KeyT {
 	height: 78.1%;
 }
 
-#Y {
+#KeyY {
 	height: 73.4%;
 }
 
-#U {
+#KeyU {
 	height: 69%;
 }
 
-#I {
+#KeyI {
 	height: 64.8%;
 }
 
-#O {
+#KeyO {
 	height: 61%;
 }
 
-#P {
+#KeyP {
 	height: 57.3%;
 }
 */
@@ -184,43 +192,43 @@ h1 {
 /* .95 de anterior */
 
 /* 
-#Q {
+#KeyQ {
 	height: 100%;
 }
 
-#W {
+#KeyW {
 	height: 95%;
 }
 
-#E {
+#KeyE {
 	height: 90.3%;
 }
 
-#R {
+#KeyR {
 	height: 85.7%;
 }
 
-#T {
+#KeyT {
 	height: 81.5%;
 }
 
-#Y {
+#KeyY {
 	height: 77.4%;
 }
 
-#U {
+#KeyU {
 	height: 73.3%;
 }
 
-#I {
+#KeyI {
 	height: 69.8%;
 }
 
-#O {
+#KeyO {
 	height: 66.3%;
 }
 
-#P {
+#KeyP {
 	height: 63%;
 } 
 */

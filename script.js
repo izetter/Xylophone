@@ -8,103 +8,102 @@ const keys = document.querySelectorAll('.key');
 const helpBtn = document.querySelector('#help');
 const recBtn = document.querySelector('#rec');
 const playBtn = document.querySelector('#play');
-const playSampleMelodyBtn = document.querySelector('#sample');
-const keyboardToXylophoneRefs = document.querySelectorAll('.key > p');
+const playSampleBtn = document.querySelector('#sample');
+const noteAndKeyRef = document.querySelectorAll('.key > p');
 
-const sampleMelodyMarimba = [
+const sample1 = [
     {
-        Key: "E",
+        code: "KeyE",
         timeStamp: 0
     },
     {
-        Key: "Q",
+        code: "KeyQ",
         timeStamp: 167
     },
     {
-        Key: "Y",
+        code: "KeyY",
         timeStamp: 334
     },
     {
-        Key: "P",
-        timeStamp: 335
+        code: "KeyP",
+        timeStamp: 334
     },
     {
-        Key: "Q",
+        code: "KeyQ",
         timeStamp: 501
     },
     {
-        Key: "T",
+        code: "KeyT",
         timeStamp: 668
     },
     {
-        Key: "Y",
+        code: "KeyY",
         timeStamp: 835
     },
     {
-        Key: "P",
-        timeStamp: 836
+        code: "KeyP",
+        timeStamp: 835
     },
     {
-        Key: "T",
+        code: "KeyT",
         timeStamp: 1002
     },
     {
-        Key: "Q",
+        code: "KeyQ",
         timeStamp: 1169
     },
     {
-        Key: "Y",
+        code: "KeyY",
         timeStamp: 1336
     },
     {
-        Key: "P",
-        timeStamp: 1337
+        code: "KeyP",
+        timeStamp: 1336
     },
     {
-        Key: "I",
+        code: "KeyI",
         timeStamp: 1509
     },
     {
-        Key: "T",
+        code: "KeyT",
         timeStamp: 1510
     },
     {
-        Key: "Q",
+        code: "KeyQ",
         timeStamp: 1670
     },
     {
-        Key: "T",
+        code: "KeyT",
         timeStamp: 1837
     },
     {
-        Key: "I",
-        timeStamp: 1838
+        code: "KeyI",
+        timeStamp: 1837
     }
 ];
 
 
 
 // Event listeners
-
-// playSampleMelodyBtn.addEventListener('click', () =>)
-
 helpBtn.addEventListener('click', () => {
-	for (let element of keyboardToXylophoneRefs) {
+	for (let element of noteAndKeyRef) {
 		element.classList.toggle('hidden');
 	}
 })
 
 document.addEventListener('keydown', (evt) => {
-	if (/[QWERTYUIOP]/i.test(evt.key) && evt.key.length === 1) eventHandler(evt);
+	if (/[QWERTYUIOP0-9]/i.test(evt.key) && evt.key.length === 1) eventHandler(evt);
 })
 
 document.addEventListener('keyup', (evt) => {
-	if (/[QWERTYUIOP]/i.test(evt.key) && evt.key.length === 1) eventHandler(evt);
+	if (/[QWERTYUIOP0-9]/i.test(evt.key) && evt.key.length === 1) eventHandler(evt);
 })
 
 for (let key of keys) {
 	key.addEventListener('click', (evt) => eventHandler(evt))
 }
+
+playSampleBtn.addEventListener('click', playSample);
 
 recBtn.addEventListener('click', record);
 
@@ -116,33 +115,19 @@ playBtn.addEventListener('click', playRecording);
 function eventHandler(evt) {
 
 /*
-
 THIS FUNCTION ACHIEVES THE FOLLOWING WANTED BEHAVIOR:
 
 If the user holds down a keyboard key -thus playing the corresponding sound once-, do not allow that same sound/animation to be played again until the user releases the key. 
-
 Neither by allowing the keydown event code to execute more than once before a keyup event occurs, nor by the user "doubling down" on a Xylophone key by using a different input method.
 i.e. the user clicking on a button while the corresponding keyboard key is being held down. (same thing when holding a tap on a button on screen).
 
-
-FUNCTION CODE NOTES:
-Notice the "key" property being destructured "outside" before switching by the type of event even though click events do not contain a "key" property. This does not throw errors because
-although on click events "key" is initialized to undefined, "key" is not referenced/used at all unless there's a keyboard event, in which case "key" is of course not undefined!
-
-Conversely, let Key = key.toUpperCase(); is referencing the "key" property! so it has to be placed within keydown/keyup cases because if done outside it would throw an exception when click events occur!
-(you cannot upper case an undefined...)
-
-The uppercasing of the value of "key" is done so that the objects pushed into the pressedKeys array contain only upper case values in their "Key" property, and thus preventing "false positives"
-due to different casing when checking if a keyboard key is pressed no matter if the user's caps lock is on or not.
-
-
-CONSIDER REFACTOR:
-Using evt.code instead of event.key would eliminate the need of uppercasing. It would require to change the ids of the html button elements and the cases of the switch statement of the
-playSound() function. 'Q' would become 'KeyQ' no matter if caps was on or off. Just note that event.code may return unwanted values on other keyboard layouts, so in such case re read the docs.
+Notice the ` code ` property being destructured "outside" before switching by the type of event even though click events do not contain a ` code ` property. This does not throw errors because
+by destructuring "outside", ` code ` actually becomes a property of the click event and it is initialized to undefined; We don't get any errors because ` code ` is not referenced/used at all 
+in the click event switch case! the ` code ` property is only used by the ` keydown/keyup ` events.
 
 */
 
-	const {type, key, currentTarget, timeStamp} = evt;
+	const {type, code, currentTarget, timeStamp} = evt;
 	const {id} = currentTarget;
 	switch (type) {
 
@@ -151,7 +136,7 @@ playSound() function. 'Q' would become 'KeyQ' no matter if caps was on or off. J
 			if (!pressedKeys[id]) {
 				playSound(id);
 				if (isRecording) {
-					const sound = {Key: id, timeStamp};
+					const sound = {code: id, timeStamp};
 					recording.push(sound);
 				}
 			}
@@ -159,12 +144,11 @@ playSound() function. 'Q' would become 'KeyQ' no matter if caps was on or off. J
 		}
 
 		case 'keydown': {
-			let Key = key.toUpperCase();
-			if (!pressedKeys[Key]) {
-				playSound(Key)
-				pressedKeys[Key] = true;
+			if (!pressedKeys[code]) {
+				playSound(code)
+				pressedKeys[code] = true;
 				if (isRecording) {
-					const sound = {Key, timeStamp};
+					const sound = {code, timeStamp};
 					recording.push(sound);
 				}
 			}
@@ -172,8 +156,7 @@ playSound() function. 'Q' would become 'KeyQ' no matter if caps was on or off. J
 		}
 
 		case 'keyup': {
-			let Key = key.toUpperCase();
-			pressedKeys[Key] = false;
+			pressedKeys[code] = false;
 			break;
 		}
 	}
@@ -181,14 +164,13 @@ playSound() function. 'Q' would become 'KeyQ' no matter if caps was on or off. J
 
 
 function record() {
-
 	if (isRecording) {
 		recBtn.classList.toggle('pressed');
 		isRecording = false;
 
-		// Creating playback array that is without the initial delay from the original timeStamp while preserving the time differences between the events' original time stamps.
 		// if statement to avoid enabling play button if user records no sound in between toggling of REC button.
 		if (recording.length !== 0) {
+			// Creating the playback array, which is to be without the initial delay from the original timeStamp while preserving the time differences between the events' original time stamps.
 			playback = [...recording];
 			for (let i = 1; i < playback.length; i++) {
 				playback[i].timeStamp -= playback[0].timeStamp;
@@ -207,72 +189,80 @@ function record() {
 
 
 function playRecording() {
-	console.log(playback);
 	for (let sound of playback) {
 		setTimeout(() => {
-			playSound(sound.Key);
+			playSound(sound.code);
+		}, sound.timeStamp);
+	}
+}
+
+// Needs refactor to play sample1 or sample2 and stuff
+function playSample() {
+	for (let sound of sample1) {
+		setTimeout(() => {
+			playSound(sound.code);
 		}, sound.timeStamp);
 	}
 }
 
 
-function playSound(Key) {
+function playSound(code) {
 
 	// Button animation
-	let btn = document.querySelector(`#${Key}`);
+	let btn = document.querySelector(`#${code}`);
 	btn.classList.add('pressed');
 	setTimeout(() => btn.classList.remove('pressed'), 100);
 
 	// Audio playback
 	let audio;
-	switch (Key) {
+	switch (code) {
 
-		case 'Q': {
+		case 'KeyQ': {
 			audio = new Audio('./sounds/G3.wav');
 			break;
 		}
 
-		case 'W': {
+		case 'KeyW': {
 			audio = new Audio('./sounds/A3.wav');
 			break;
 		}
 
-		case 'E': {
+		case 'KeyE': {
 			audio = new Audio('./sounds/B3.wav');
 			break;
 		}
 
-		case 'R': {
+		case 'KeyR': {
 			audio = new Audio('./sounds/C4.wav');
 			break;
 		}
 
-		case 'T': {
+		case 'KeyT': {
 			audio = new Audio('./sounds/D4.wav');
 			break;
 		}
 
-		case 'Y': {
+		case 'KeyY': {
 			audio = new Audio('./sounds/E4.wav');
 			break;
 		}
 
-		case 'U': {
+		case 'KeyU': {
 			audio = new Audio('./sounds/F4.wav');
 			break;
 		}
 
-		case 'I': {
+		case 'KeyI': {
 			audio = new Audio('./sounds/G4.wav');
 			break;
 		}
 
-		case 'O': {
+		case 'KeyO': {
 			audio = new Audio('./sounds/A4.wav');
 			break;
 		}
 
-		case 'P': {
+		case 'KeyP': {
 			audio = new Audio('./sounds/B4.wav');
 			break;
 		}
