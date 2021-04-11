@@ -66,7 +66,7 @@ const sample1 = [
     },
     {
         code: "KeyT",
-        timeStamp: 1510
+        timeStamp: 1509
     },
     {
         code: "KeyQ",
@@ -196,8 +196,15 @@ function playRecording() {
 	}
 }
 
-// Needs refactor to play sample1 or sample2 and stuff
+// Needs refactor to play sample1 or sample2 and any other existing sample alternatively
 function playSample() {
+
+	// Disable play sample button while melody is playing
+	playSampleBtn.disabled = true;
+	let sampleDuration = sample1[sample1.length - 1].timeStamp;
+	setTimeout(() => playSampleBtn.disabled = false, sampleDuration);
+
+	// Play the sounds on their tempo
 	for (let sound of sample1) {
 		setTimeout(() => {
 			playSound(sound.code);
