@@ -10,7 +10,6 @@ const recBtn = document.querySelector('#rec');
 const playBtn = document.querySelector('#play');
 const playSampleBtn = document.querySelector('#sample');
 const noteAndKeyRef = document.querySelectorAll('.key > p');
-
 const sample1 = [
     {
         code: "KeyE",
@@ -83,25 +82,25 @@ const sample1 = [
 ];
 
 
-
 // Event listeners
-helpBtn.addEventListener('click', () => {
-	for (let element of noteAndKeyRef) {
-		element.classList.toggle('hidden');
-	}
-})
 
 document.addEventListener('keydown', (evt) => {
-	if (/[QWERTYUIOP0-9]/i.test(evt.key) && evt.key.length === 1) eventHandler(evt);
+	if (/[QWERTYUIOP2356890]/i.test(evt.key) && evt.key.length === 1) eventHandler(evt);
 })
 
 document.addEventListener('keyup', (evt) => {
-	if (/[QWERTYUIOP0-9]/i.test(evt.key) && evt.key.length === 1) eventHandler(evt);
+	if (/[QWERTYUIOP2356890]/i.test(evt.key) && evt.key.length === 1) eventHandler(evt);
 })
 
 for (let key of keys) {
 	key.addEventListener('click', (evt) => eventHandler(evt))
 }
+
+helpBtn.addEventListener('click', () => {
+	for (let element of noteAndKeyRef) {
+		element.classList.toggle('hidden');
+	}
+})
 
 playSampleBtn.addEventListener('click', playSample);
 
@@ -224,6 +223,7 @@ function playSound(code) {
 	let audio;
 	switch (code) {
 
+		// Naturals
 		case 'KeyQ': {
 			audio = new Audio('./sounds/G3.wav');
 			break;
@@ -271,6 +271,42 @@ function playSound(code) {
 
 		case 'KeyP': {
 			audio = new Audio('./sounds/B4.wav');
+			break;
+		}
+
+		// Sharps
+		case 'Digit2': {
+			audio = new Audio('./sounds/Gsharp3.wav');
+			break;
+		}
+
+		case 'Digit3': {
+			audio = new Audio('./sounds/Asharp3.wav');
+			break;
+		}
+
+		case 'Digit5': {
+			audio = new Audio('./sounds/Csharp4.wav');
+			break;
+		}
+
+		case 'Digit6': {
+			audio = new Audio('./sounds/Dsharp4.wav');
+			break;
+		}
+
+		case 'Digit8': {
+			audio = new Audio('./sounds/Fsharp4.wav');
+			break;
+		}
+
+		case 'Digit9': {
+			audio = new Audio('./sounds/Gsharp4.wav');
+			break;
+		}
+
+		case 'Digit0': {
+			audio = new Audio('./sounds/Asharp4.wav');
 			break;
 		}
 	} 
