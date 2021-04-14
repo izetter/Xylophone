@@ -2,6 +2,7 @@
 // Variables
 let playback = [];
 let isRecording = false;
+let sampleShuffler = 1;
 const recording = [];
 const pressedKeys = {};
 const keys = document.querySelectorAll('.key');
@@ -80,6 +81,119 @@ const sample1 = [
         timeStamp: 1837
     }
 ];
+
+const sample2 = [
+    {
+        code: "KeyR",
+        timeStamp: 0
+    },
+    {
+        code: "Digit6",
+        timeStamp: 0
+    },
+    {
+        code: "KeyI",
+        timeStamp: 0
+    },
+    {
+        code: "KeyR",
+        timeStamp: 400
+    },
+    {
+        code: "KeyI",
+        timeStamp: 400
+    },
+    {
+        code: "Digit0",
+        timeStamp: 400
+    },
+    {
+        code: "KeyR",
+        timeStamp: 800
+    },
+    {
+        code: "KeyU",
+        timeStamp: 800
+    },
+    {
+        code: "KeyO",
+        timeStamp: 800
+    },
+    {
+        code: "KeyR",
+        timeStamp: 1400
+    },
+    {
+        code: "Digit6",
+        timeStamp: 1400
+    },
+    {
+        code: "KeyI",
+        timeStamp: 1400
+    },
+    {
+        code: "KeyR",
+        timeStamp: 1800
+    },
+    {
+        code: "KeyI",
+        timeStamp: 1800
+    },
+    {
+        code: "Digit0",
+        timeStamp: 1800
+    },
+    {
+        code: "KeyR",
+        timeStamp: 2200
+    },
+    {
+        code: "KeyI",
+        timeStamp: 2200
+    },
+    {
+        code: "Digit0",
+        timeStamp: 2200
+    },
+    {
+        code: "KeyR",
+        timeStamp: 2400
+    },
+    {
+        code: "KeyU",
+        timeStamp: 2400
+    },
+    {
+        code: "KeyO",
+        timeStamp: 2400
+    },
+    {
+        code: "KeyR",
+        timeStamp: 2600
+    },
+    {
+        code: "KeyU",
+        timeStamp: 2600
+    },
+    {
+        code: "KeyO",
+        timeStamp: 2600
+    },
+    {
+        code: "KeyR",
+        timeStamp: 2800
+    },
+    {
+        code: "Digit6",
+        timeStamp: 2800
+    },
+    {
+        code: "KeyI",
+        timeStamp: 2800
+    }
+];
+
+
 
 
 // Event listeners
@@ -195,20 +309,26 @@ function playRecording() {
 	}
 }
 
-// Needs refactor to play sample1 or sample2 and any other existing sample alternatively
 function playSample() {
 
-	// Disable play sample button while melody is playing
-	playSampleBtn.disabled = true;
-	let sampleDuration = sample1[sample1.length - 1].timeStamp;
-	setTimeout(() => playSampleBtn.disabled = false, sampleDuration);
+	// Decide which of the two samples to play
+	let sample = sample1;
+	if (sampleShuffler % 2 === 0) sample = sample2;
+	sampleShuffler++;
+
+	console.log(sample[0].timeStamp);
 
 	// Play the sounds on their tempo
-	for (let sound of sample1) {
+	for (let sound of sample) {
 		setTimeout(() => {
 			playSound(sound.code);
 		}, sound.timeStamp);
 	}
+
+	// Disable play sample button while sample melody is playing
+	let sampleDuration = sample[sample.length - 1].timeStamp;
+	playSampleBtn.disabled = true;
+	setTimeout(() => playSampleBtn.disabled = false, sampleDuration);
 }
 
 
