@@ -1,10 +1,26 @@
 
 body {
-	text-align: center;
 	background-color: #283149;
+	text-align: center;
+}
+
+header {
+	margin-top: 15px;
+}
+
+h1 {
+	color: #DBEDF3;
+	display: inline-block;
+	font-family: "Arvo", cursive;
+	font-size: 5rem;
+	margin-bottom: 0;
+	margin-top: 3%;
+	text-shadow: 3px 0 #DA0463;
+	vertical-align: super;
 }
 
 
+/********** Control buttons *********/
 
 #buttons {
 	display: inline-block;
@@ -17,93 +33,22 @@ body {
 }
 
 #help {
-	width: 40px;
 	height: 40px;
+	width: 40px;
 }
 
 #rec,
 #play {
-	width: 70px;
 	height: 50px;
+	width: 70px;
 }
 
-.hidden {
-	display: none;
-}
-
-
-.pressed {
-	box-shadow: 0 3px 4px 0 #DBEDF3;
-	/* opacity: 0.5; */
-	transform: scale(1.11);
-	transition: all .2s ease-in-out;
-}
-
-
-
-
-header {
-	margin-top: 15px;
-}
-
-h1 {
-	font-size: 5rem;
-	color: #DBEDF3;
-	font-family: "Arvo", cursive;
-	text-shadow: 3px 0 #DA0463;
-	display: inline-block;
-	vertical-align: super;
-	margin-top: 3%;
-	margin-bottom: 0;
-}
-
-
-.key {
-	display: flex;
-	flex-direction:	column-reverse;
-	width: 90px;
-	background-image: url("./images/t2.jpg");
-	background-repeat: round;
-	border-style: none;
-	border-radius: 6px;
-	outline: none;
-	filter: brightness(0.5) saturate(4);
-	/* filter: brightness(0.45) saturate(5); */
-	/* filter: brightness(1.6) saturate(0.7); */
-	/* box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.4); */
-	box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.4), inset 0.1px 0.1px 30px 4px rgba(0, 0, 0, 0.3);
-	box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.4);
-	margin-left: 4px;
-	margin-right: 4px;
-	background-color: lightgray;
-}
-
-
-.key > p {
-	font-size: 2rem;
-	margin-bottom: 20%;
-}
-
-
-.spacer {
-	height: 0;
-	margin-left: 4px;
-	margin-right: 4px;
-	width: 90px;
-}
-
-.end-spacer {
-	height: 0;
-	margin-left: 4px;
-	margin-right: 4px;
-	width: 41px;
-}
-
+/************* Keys **************/
 
 #wrapper {
-	position: relative;
 	margin-top: 100px;
 	padding-top: 20vh;
+	position: relative;
 }
 
 #naturals {
@@ -126,8 +71,53 @@ h1 {
 	pointer-events: auto;
 }
 
+.key {
+	background-image: url("./images/t2.jpg");
+	background-repeat: round;
+	border: 2px solid transparent;
+	border-radius: 6px;
+	box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.4);
+	display: flex;
+	filter: brightness(0.5) saturate(4);
+	flex-direction:	column-reverse;
+	margin-left: 4px;
+	margin-right: 4px;
+	outline: none;
+	width: 90px;
+}
 
+.key > p {
+	font-size: 2rem;
+	margin-bottom: 20%;
+}
 
+.pressed {
+	box-shadow: 0 3px 4px 0 #DBEDF3;
+	transform: scale(1.1);
+	transition: all .1s ease-in-out;
+	border: 2px solid #ffc600;
+	box-shadow: 0 0 1rem #ffc600;
+}
+
+.hidden {
+	display: none;
+}
+
+.spacer {
+	height: 0;
+	margin-left: 4px;
+	margin-right: 4px;
+	width: 90px;
+}
+
+.end-spacer {
+	height: 0;
+	margin-left: 4px;
+	margin-right: 4px;
+	width: 41px;
+}
+
+/* Natural keys sizes */
 #KeyQ {
 	height: 100%;
 }
@@ -168,8 +158,7 @@ h1 {
 	height: 55%;
 }
 
-
-
+/* Sharp keyssizes */
 #Digit2 {
 	height: 97.5%;
 }

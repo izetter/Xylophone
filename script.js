@@ -194,10 +194,7 @@ const sample2 = [
 ];
 
 
-
-
 // Event listeners
-
 document.addEventListener('keydown', (evt) => {
 	if (/[QWERTYUIOP2356890]/i.test(evt.key) && evt.key.length === 1) eventHandler(evt);
 })
@@ -221,7 +218,6 @@ playSampleBtn.addEventListener('click', playSample);
 recBtn.addEventListener('click', record);
 
 playBtn.addEventListener('click', playRecording);
-
 
 
 // Functions
@@ -275,7 +271,6 @@ in the click event switch case! the ` code ` property is only used by the ` keyd
 	}
 }
 
-
 function record() {
 	if (isRecording) {
 		recBtn.classList.toggle('pressed');
@@ -300,7 +295,6 @@ function record() {
 	}
 }
 
-
 function playRecording() {
 	for (let sound of playback) {
 		setTimeout(() => {
@@ -316,8 +310,6 @@ function playSample() {
 	if (sampleShuffler % 2 === 0) sample = sample2;
 	sampleShuffler++;
 
-	console.log(sample[0].timeStamp);
-
 	// Play the sounds on their tempo
 	for (let sound of sample) {
 		setTimeout(() => {
@@ -325,12 +317,15 @@ function playSample() {
 		}, sound.timeStamp);
 	}
 
-	// Disable play sample button while sample melody is playing
+	// Disable REC and play sample buttons while sample melody is playing
 	let sampleDuration = sample[sample.length - 1].timeStamp;
+	recBtn.disabled = true;
 	playSampleBtn.disabled = true;
-	setTimeout(() => playSampleBtn.disabled = false, sampleDuration);
+    setTimeout(() => {
+        recBtn.disabled = false;
+        playSampleBtn.disabled = false;
+    }, sampleDuration);
 }
-
 
 function playSound(code) {
 
