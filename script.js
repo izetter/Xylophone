@@ -10,7 +10,7 @@ const helpBtn = document.querySelector('#help');
 const recBtn = document.querySelector('#rec');
 const playBtn = document.querySelector('#play');
 const playSampleBtn = document.querySelector('#sample');
-const noteAndKeyRef = document.querySelectorAll('.key > p');
+const keyBindings = document.querySelectorAll('.key > p');
 const sample1 = [
     {
         code: "KeyE",
@@ -208,7 +208,7 @@ for (let key of keys) {
 }
 
 helpBtn.addEventListener('click', () => {
-	for (let element of noteAndKeyRef) {
+	for (let element of keyBindings) {
 		element.classList.toggle('hidden');
 	}
 })

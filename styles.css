@@ -14,139 +14,80 @@ body {
 	font-family: 'Arvo', cursive;
 }
 
+
+/********** Header and control buttons *********/
+
 header {
-	margin-top: 15px;
+	margin-top: 25px;
+	align-items: center;
+	display: flex;
+	justify-content: center;
 }
 
 h1 {
-	color: #DBEDF3;
-	display: inline-block;
-	font-family: "Arvo", cursive;
+	/* color: #39a5c9; */
+	/* font-family: "Arial", cursive; */
 	font-size: 5rem;
-	margin-bottom: 0;
-	margin-top: 3%;
-	text-shadow: 3px 0 #DA0463;
-	vertical-align: super;
+	margin: 0 10% 0 0;
+	/* text-shadow: 3px 0 #DA0463; */
 }
 
-
-/********** Control buttons *********/
-
-#buttons {
-	display: inline-block;
-	margin-left: 50px;
-}
-
-#sample {
-	height: 45px;
-	margin-bottom: 10px;
-}
-
-#help {
-	height: 40px;
-	width: 40px;
-}
-
-#rec {
-	/* height: 256px; */
-	/* width: 26px; */
-	/* background-image: url("./images/rec.png"); */
-	/* border-radius: 50%; */
-	/* width: 90px; */
-
-}
-
-#play,
-#rec {
-	/* height: 50px; */
-	/* width: 70px; */
-}
-
-#play {
-	/* width: 65px; */
-	/* padding-bottom: 6.5%; */
-	/* padding-left: 15px; */
-}
-
-
-#rec > img {
-	/* width: 1rem; */
-	/* vertical-align: text-top; */
-}
-
-#rec {
-	/* background-color: #F63D3D; */
-	background: linear-gradient(#F63D3D, #950000);
-	border-style: none;
-	border-radius: 0.2rem;
-	color: #262626;
-	font-family: 'Arvo';
-	font-size: 1.4rem;
-	padding: 0.7rem 1.1rem;
-	box-shadow: 1px 1px 5px 0 #000000;
+.btn {
+	border: 2px solid;
+	background-color: transparent;
+	padding: 6px 12px 6px;
+	/* font-weight: bold; */
+	font-size: 1.1rem;
 	cursor: pointer;
-	outline-style: none;
-}
-
-#rec:hover {
-	background: #F63D3D;
-	/* background: linear-gradient(top, #F63D3D, #950000); */
-
-	/* -webkit-border-radius: 21px; */
-	/* -moz-border-radius: 21px; */
-	/* border-radius: 21px; */
-	/* text-decoration: none;*/
+	outline: transparent;
+	/* transition: background .25s ease, color .25s ease, box-shadow .15s ease; */
 }
 
 
-#play {
-	background-color: #f8fcf5;
-	/* background: linear-gradient(#70C732, #478500); */
-	border: 0.2rem solid #70C732;
-	/* border-style: none; */
-	border-radius: 0.2rem;
-	border-top-right-radius: 1.5rem;
-	border-bottom-right-radius: 1.5rem;
-	color: #262626;
-	font-family: 'Arvo';
-	font-size: 1.4rem;
-	padding: 0.5rem 0.9rem;
-	box-shadow: 1px 1px 5px 0 #000000;
-	cursor: pointer;
-	outline-style: none;
+.sample {
+	border-color: deepskyblue;
+	color: #444;
 }
 
-#play:hover {
-	background: #70C732;
-	/* background: linear-gradient(top, #F63D3D, #950000); */
-
-	/* -webkit-border-radius: 21px; */
-	/* -moz-border-radius: 21px; */
-	/* border-radius: 21px; */
-	/* text-decoration: none;*/
+.sample:hover {
+	background-color: deepskyblue;
 }
 
-#buttons > img {
-	width: 4rem;
+.rec {
+	border-color: #f63d3d;
+	color: #303030;
 }
 
-
-#rec:disabled {
-    /* background: black; */
-	opacity: 0.2;
+.rec:hover {
+    background-color: #f63d3d;
 }
 
-#play:disabled {
-    /* background: black; */
-	opacity: 0.2;
+.play {
+	border-color: #3fc23f;
+	color: #444;
+}
+
+.play:hover {
+    background-color: #3fc23f;
+}
+
+.help {
+	border-color: gold;
+	border-radius: 50%;
+	color: darkorange;
+	/* color: gold; */
+	color: #444;
+	margin: 0 0 0 1.2%;
+}
+
+.help:hover {
+    background-color: gold;
 }
 
 
 
 
-.active-btn {
 
-}
 
 /************* Keys **************/
 
