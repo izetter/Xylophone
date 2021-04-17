@@ -273,7 +273,7 @@ in the click event switch case! the ` code ` property is only used by the ` keyd
 
 function record() {
 	if (isRecording) {
-		recBtn.classList.toggle('pressed');
+		// recBtn.classList.toggle('pressed');
 		isRecording = false;
 
 		// if statement to avoid enabling play button if user records no sound in between toggling of REC button.
@@ -290,7 +290,7 @@ function record() {
 	} else {
 		if (recording.length !== 0) recording.length = 0;
 		if (!playBtn.disabled) playBtn.disabled = true;
-		recBtn.classList.toggle('pressed');
+		// recBtn.classList.toggle('pressed');
 		isRecording = true;
 	}
 }
