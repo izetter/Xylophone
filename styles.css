@@ -32,21 +32,43 @@ h1 {
 	/* text-shadow: 3px 0 #DA0463; */
 }
 
+#above {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+#below {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
 .btn {
 	border: 2px solid;
 	background-color: transparent;
-	padding: 6px 12px 6px;
+	padding: 6px 12px;
 	/* font-weight: bold; */
 	font-size: 1.1rem;
 	cursor: pointer;
 	outline: transparent;
 	/* transition: background .25s ease, color .25s ease, box-shadow .15s ease; */
+	display: inline-block;
+	margin: 3px;
 }
-
 
 .sample {
 	border-color: deepskyblue;
 	color: #444;
+	flex-grow: 1;
+	display: flex;
+}
+
+.sample img {
+	width: 0.9rem;
+	vertical-align: middle;
+	margin-top: 3.5px;
+	margin-right: 6px;
 }
 
 .sample:hover {
@@ -55,7 +77,8 @@ h1 {
 
 .rec {
 	border-color: #f63d3d;
-	color: #303030;
+	color: #141414;
+	flex-grow: 1;
 }
 
 .rec:hover {
@@ -65,6 +88,7 @@ h1 {
 .play {
 	border-color: #3fc23f;
 	color: #444;
+	flex-grow: 1;
 }
 
 .play:hover {
@@ -73,11 +97,7 @@ h1 {
 
 .help {
 	border-color: gold;
-	border-radius: 50%;
-	color: darkorange;
-	/* color: gold; */
 	color: #444;
-	margin: 0 0 0 1.2%;
 }
 
 .help:hover {
