@@ -32,29 +32,27 @@ h1 {
 	/* text-shadow: 3px 0 #DA0463; */
 }
 
-#above {
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-}
-
-#below {
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-}
-
-.btn {
+button {
 	border: 2px solid;
 	background-color: transparent;
 	padding: 6px 12px;
 	/* font-weight: bold; */
 	font-size: 1.1rem;
-	cursor: pointer;
 	outline: transparent;
 	/* transition: background .25s ease, color .25s ease, box-shadow .15s ease; */
 	display: inline-block;
 	margin: 3px;
+}
+
+button:disabled {
+	border-color: lightgrey;
+	color: lightgrey;
+}
+
+.btns-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
 }
 
 .sample {
@@ -64,14 +62,7 @@ h1 {
 	display: flex;
 }
 
-.sample img {
-	width: 0.9rem;
-	vertical-align: middle;
-	margin-top: 3.5px;
-	margin-right: 6px;
-}
-
-.sample:hover {
+.sample:hover:enabled {
 	background-color: deepskyblue;
 }
 
@@ -81,7 +72,11 @@ h1 {
 	flex-grow: 1;
 }
 
-.rec:hover {
+.rec:hover:enabled {
+    background-color: #f63d3d;
+}
+
+.rec-active {
     background-color: #f63d3d;
 }
 
@@ -91,7 +86,11 @@ h1 {
 	flex-grow: 1;
 }
 
-.play:hover {
+.play:hover:enabled {
+    background-color: #3fc23f;
+}
+
+.play-active {
     background-color: #3fc23f;
 }
 
@@ -102,7 +101,20 @@ h1 {
 
 .help:hover {
     background-color: gold;
+	/* filter: grayscale(80%); */
 }
+
+.help-active {
+    background-color: gold;
+}
+
+
+
+
+
+
+
+
 
 
 

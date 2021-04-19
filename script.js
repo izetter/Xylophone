@@ -6,10 +6,10 @@ let sampleShuffler = 1;
 const recording = [];
 const pressedKeys = {};
 const keys = document.querySelectorAll('.key');
-const helpBtn = document.querySelector('#help');
-const recBtn = document.querySelector('#rec');
-const playBtn = document.querySelector('#play');
-const playSampleBtn = document.querySelector('#sample');
+const helpBtn = document.querySelector('.help');
+const recBtn = document.querySelector('.rec');
+const playBtn = document.querySelector('.play');
+const playSampleBtn = document.querySelector('.sample');
 const keyBindings = document.querySelectorAll('.key > p');
 const sample1 = [
     {
@@ -207,15 +207,19 @@ for (let key of keys) {
 	key.addEventListener('click', (evt) => eventHandler(evt))
 }
 
+playSampleBtn.addEventListener('click', playSample);
+
 helpBtn.addEventListener('click', () => {
+    helpBtn.classList.toggle('help-active')
 	for (let element of keyBindings) {
 		element.classList.toggle('hidden');
 	}
 })
 
-playSampleBtn.addEventListener('click', playSample);
-
-recBtn.addEventListener('click', record);
+recBtn.addEventListener('click', () => {
+	recBtn.classList.toggle('rec-active');
+    record();
+});
 
 playBtn.addEventListener('click', playRecording);
 
@@ -273,9 +277,6 @@ in the click event switch case! the ` code ` property is only used by the ` keyd
 
 function record() {
 	if (isRecording) {
-		// recBtn.classList.toggle('pressed');
-		isRecording = false;
-
 		// if statement to avoid enabling play button if user records no sound in between toggling of REC button.
 		if (recording.length !== 0) {
 			// Creating the playback array, which is to be without the initial delay from the original timeStamp while preserving the time differences between the events' original time stamps.
@@ -286,21 +287,33 @@ function record() {
 			playback[0].timeStamp = 0;
 			playBtn.disabled = false;
 		}
-		
+        playSampleBtn.disabled = false;
+		isRecording = false;
 	} else {
-		if (recording.length !== 0) recording.length = 0;
+        if (recording.length !== 0) recording.length = 0;
 		if (!playBtn.disabled) playBtn.disabled = true;
-		// recBtn.classList.toggle('pressed');
+        playSampleBtn.disabled = true;
 		isRecording = true;
 	}
 }
 
 function playRecording() {
+
+	// Play the sounds on their tempo
 	for (let sound of playback) {
 		setTimeout(() => {
 			playSound(sound.code);
 		}, sound.timeStamp);
 	}
+
+    // Disable the REC button and make the play button look active while recorded melody is playing
+	let playbackDuration = playback[playback.length - 1].timeStamp;
+    playBtn.classList.toggle('play-active');
+	recBtn.disabled = true;
+    setTimeout(() => {
+        playBtn.classList.toggle('play-active');
+        recBtn.disabled = false;
+    }, playbackDuration);
 }
 
 function playSample() {
@@ -317,13 +330,13 @@ function playSample() {
 		}, sound.timeStamp);
 	}
 
-	// Disable REC and play sample buttons while sample melody is playing
+	// Disable REC and Play sample buttons while sample melody is playing
 	let sampleDuration = sample[sample.length - 1].timeStamp;
-	recBtn.disabled = true;
 	playSampleBtn.disabled = true;
+	recBtn.disabled = true;
     setTimeout(() => {
-        recBtn.disabled = false;
         playSampleBtn.disabled = false;
+        recBtn.disabled = false;
     }, sampleDuration);
 }
 
