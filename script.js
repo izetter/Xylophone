@@ -210,14 +210,14 @@ for (let key of keys) {
 playSampleBtn.addEventListener('click', playSample);
 
 helpBtn.addEventListener('click', () => {
-    helpBtn.classList.toggle('help-active')
+    helpBtn.classList.toggle('help-clicked')
 	for (let element of keyBindings) {
 		element.classList.toggle('hidden');
 	}
 })
 
 recBtn.addEventListener('click', () => {
-	recBtn.classList.toggle('rec-active');
+	recBtn.classList.toggle('rec-clicked');
     record();
 });
 
@@ -308,10 +308,10 @@ function playRecording() {
 
     // Disable the REC button and make the play button look active while recorded melody is playing
 	let playbackDuration = playback[playback.length - 1].timeStamp;
-    playBtn.classList.toggle('play-active');
+    playBtn.classList.toggle('play-clicked');
 	recBtn.disabled = true;
     setTimeout(() => {
-        playBtn.classList.toggle('play-active');
+        playBtn.classList.toggle('play-clicked');
         recBtn.disabled = false;
     }, playbackDuration);
 }

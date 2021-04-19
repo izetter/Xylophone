@@ -35,18 +35,21 @@ h1 {
 button {
 	border: 2px solid;
 	background-color: transparent;
-	padding: 6px 12px;
-	/* font-weight: bold; */
 	font-size: 1.1rem;
-	outline: transparent;
-	/* transition: background .25s ease, color .25s ease, box-shadow .15s ease; */
-	display: inline-block;
 	margin: 3px;
+	outline: transparent;
+	padding: 6px 12px;
+	/* transition: background .25s ease, color .25s ease, box-shadow .15s ease; */
 }
 
 button:disabled {
-	border-color: lightgrey;
 	color: lightgrey;
+	border-color: lightgrey;
+}
+
+button:active {
+	filter: saturate(0.8);
+	transform: scale(0.9);
 }
 
 .btns-container {
@@ -57,18 +60,31 @@ button:disabled {
 
 .sample {
 	border-color: deepskyblue;
-	color: #444;
-	flex-grow: 1;
+	color: #2c2c2c;
 	display: flex;
+	flex-grow: 1;
 }
 
 .sample:hover:enabled {
 	background-color: deepskyblue;
 }
 
+.help {
+	border-color: gold;
+	color: #2c2c2c;
+}
+
+.help:hover {
+    background-color: gold;
+}
+
+.help-clicked {
+    background-color: gold;
+}
+
 .rec {
 	border-color: #f63d3d;
-	color: #141414;
+	color: #2c2c2c;
 	flex-grow: 1;
 }
 
@@ -76,13 +92,13 @@ button:disabled {
     background-color: #f63d3d;
 }
 
-.rec-active {
+.rec-clicked {
     background-color: #f63d3d;
 }
 
 .play {
 	border-color: #3fc23f;
-	color: #444;
+	color: #2c2c2c;
 	flex-grow: 1;
 }
 
@@ -90,35 +106,9 @@ button:disabled {
     background-color: #3fc23f;
 }
 
-.play-active {
+.play-clicked {
     background-color: #3fc23f;
 }
-
-.help {
-	border-color: gold;
-	color: #444;
-}
-
-.help:hover {
-    background-color: gold;
-	/* filter: grayscale(80%); */
-}
-
-.help-active {
-    background-color: gold;
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /************* Keys **************/
@@ -133,12 +123,9 @@ button:disabled {
 	display: flex;
 	height: 42vh;
 	justify-content: center;
-	/* width: 90%; */
 }
 
 #sharps {
-	/* width: 90%; */
-
 	display: flex;
 	height: 42vh;
 	justify-content: center;
