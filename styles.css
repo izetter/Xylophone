@@ -3,33 +3,30 @@ html {
 	box-sizing: border-box;
 }
 
-*, *::before, *::after {
-	box-sizing: inherit;
-}
-
-
 body {
-	/* background-color: #283149; */
+	background-color: #daebec;
+	/* background-color: #ecdada; */
+	/* background-color: #e2daec; */
 	text-align: center;
-	font-family: 'Arvo', cursive;
 }
 
 
-/********** Header and control buttons *********/
+/********** header and control buttons *********/
 
 header {
-	margin-top: 25px;
+	margin-top: 30px;
 	align-items: center;
 	display: flex;
 	justify-content: center;
 }
 
 h1 {
-	/* color: #39a5c9; */
-	/* font-family: "Arial", cursive; */
+	color: #39a5c9;
+	/* color: #2d8baa; */
+	font-family: 'Arial', sans-serif;
 	font-size: 5rem;
 	margin: 0 10% 0 0;
-	/* text-shadow: 3px 0 #DA0463; */
+	/* text-shadow: 2px 2px #DA0463; */
 }
 
 button {
@@ -39,7 +36,6 @@ button {
 	margin: 3px;
 	outline: transparent;
 	padding: 6px 12px;
-	/* transition: background .25s ease, color .25s ease, box-shadow .15s ease; */
 }
 
 button:disabled {
@@ -48,8 +44,8 @@ button:disabled {
 }
 
 button:active {
-	filter: saturate(0.8);
-	transform: scale(0.9);
+	filter: saturate(.8);
+	transform: scale(.9);
 }
 
 .btns-container {
@@ -61,7 +57,6 @@ button:active {
 .sample {
 	border-color: deepskyblue;
 	color: #2c2c2c;
-	display: flex;
 	flex-grow: 1;
 }
 
@@ -74,10 +69,7 @@ button:active {
 	color: #2c2c2c;
 }
 
-.help:hover {
-    background-color: gold;
-}
-
+.help:hover,
 .help-clicked {
     background-color: gold;
 }
@@ -88,11 +80,8 @@ button:active {
 	flex-grow: 1;
 }
 
-.rec:hover:enabled {
-    background-color: #f63d3d;
-}
-
-.rec-clicked {
+.rec:hover:enabled,
+.rec-clicked  {
     background-color: #f63d3d;
 }
 
@@ -102,32 +91,29 @@ button:active {
 	flex-grow: 1;
 }
 
-.play:hover:enabled {
-    background-color: #3fc23f;
-}
-
+.play:hover:enabled,
 .play-clicked {
     background-color: #3fc23f;
 }
 
 
-/************* Keys **************/
+/************* main and keys **************/
 
-#wrapper {
-	margin-top: 12vh;
-	padding-top: 21vh;
+main {
+	margin-top: 10vh;
+	padding-top: 23vh;
 	position: relative;
 }
 
 #naturals {
 	display: flex;
-	height: 42vh;
+	height: 45vh;
 	justify-content: center;
 }
 
 #sharps {
 	display: flex;
-	height: 42vh;
+	height: 45vh;
 	justify-content: center;
 	pointer-events: none;
 	position: absolute;
@@ -140,14 +126,15 @@ button:active {
 }
 
 .key {
-	background-image: url("./images/t2.jpg");
+	background-image: url("./images/texture.jpg");
 	background-repeat: round;
 	border: 2px solid transparent;
 	border-radius: 6px;
-	box-shadow: 2px 3px 8px 2px rgba(0, 0, 0, 0.4);
+	box-shadow: 2px 3px 8px 2px rgba(0, 0, 0, .4);
 	display: flex;
-	filter: brightness(0.5) saturate(4);
-	flex-direction:	column-reverse;
+	filter: brightness(.5) saturate(4);
+	flex-direction:	column;
+	justify-content: flex-end;
 	margin-left: 4px;
 	margin-right: 4px;
 	outline: none;
@@ -155,14 +142,21 @@ button:active {
 }
 
 .key > p {
-	margin-bottom: 20%;
-	font-size: 2rem;
-	background-color: #565656;
-	color: transparent;
-	text-shadow: 0 1px 3px rgba(12, 12, 12, 0.5);
 	background-clip: text;
+	background-color: #6e6e6e;
+	color: transparent;
+	font: 2rem 'Arvo', serif;
+	margin-bottom: 20%;
+	margin-top: 0;
+	text-shadow: 0 1px 3px rgba(12, 12, 12, .5);
   	-webkit-background-clip: text;
     /* -moz-background-clip: text; */
+}
+
+.key > p:first-child {
+	font-size: 1.1rem;
+	margin-bottom: 15%;
+	text-shadow: 0 1px 2px rgba(12, 12, 12, .5);
 }
 
 .spacer {
@@ -233,7 +227,7 @@ button:active {
 	height: 55%;
 }
 
-/* Sharp keyssizes */
+/* Sharp keys sizes */
 #Digit2 {
 	height: 97.5%;
 }
@@ -260,4 +254,29 @@ button:active {
 
 #Digit0 {
 	height: 57.5%;
+}
+
+
+/********* bottom links *********/
+
+.name {
+	font: .9rem 'Courier New', Courier, monospace;
+	text-decoration: none;
+	opacity: .55;
+	position: absolute;
+	bottom: 8px;
+	left: 10px;
+}
+
+.social-icon {
+    opacity: .4;
+    width: 30px;
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+.name:hover,
+.social-icon:hover {
+	opacity: .85;
 }

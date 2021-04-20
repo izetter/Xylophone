@@ -404,37 +404,37 @@ function playSound(code) {
 
 		// Sharps
 		case 'Digit2': {
-			audio = new Audio('./sounds/Gsharp3.wav');
+			audio = new Audio('./sounds/G3sharp.wav');
 			break;
 		}
 
 		case 'Digit3': {
-			audio = new Audio('./sounds/Asharp3.wav');
+			audio = new Audio('./sounds/A3sharp.wav');
 			break;
 		}
 
 		case 'Digit5': {
-			audio = new Audio('./sounds/Csharp4.wav');
+			audio = new Audio('./sounds/C4sharp.wav');
 			break;
 		}
 
 		case 'Digit6': {
-			audio = new Audio('./sounds/Dsharp4.wav');
+			audio = new Audio('./sounds/D4sharp.wav');
 			break;
 		}
 
 		case 'Digit8': {
-			audio = new Audio('./sounds/Fsharp4.wav');
+			audio = new Audio('./sounds/F4sharp.wav');
 			break;
 		}
 
 		case 'Digit9': {
-			audio = new Audio('./sounds/Gsharp4.wav');
+			audio = new Audio('./sounds/G4sharp.wav');
 			break;
 		}
 
 		case 'Digit0': {
-			audio = new Audio('./sounds/Asharp4.wav');
+			audio = new Audio('./sounds/A4sharp.wav');
 			break;
 		}
 	} 
