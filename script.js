@@ -193,59 +193,38 @@ const sample2 = [
     }
 ];
 
+/* 
 
-// Q
-    const G3 = new Audio('./sounds/G3.wav');
+The variables below were originally not necesary until the site was deployed with commit e4ba981 (tag: "working"). For reasons yet to be known, instead of caching the audio files,
+the browser kept downloading the corresponding audio file every single time it needed to be played, which resulted in janky audio playback.
+This of course wasn't an issue while building because files were available locally.
 
-// w
-    const A3= new Audio('./sounds/A3.wav');
+The solution, which was implemented on commit a0cbb67 (tag: "test1"), was to have the audio objects readily availabe by creating these 17 audio object variables and having the
+playSound() play the corresponding one instead of creating a single audio object variable which was reassgined to the proper audio file every time playSound() was executed.
+The solution also required to set an audio's currentTime to zero immediately before every time the audio needed to be played.
 
-// E
-    const B3 = new Audio('./sounds/B3.wav');
+Perhaps, a more elegant solution would be to leave the code as it was before commit a0cbb67 (tag: "test1") and find a way to force the browser to cache and use the cached audio files.
 
-// R
-    const C4 = new Audio('./sounds/C4.wav');
+*/
 
-// T
-    const D4 = new Audio('./sounds/D4.wav');
+const G3 = new Audio('./sounds/G3.wav');	// Q
+const A3= new Audio('./sounds/A3.wav');		// W
+const B3 = new Audio('./sounds/B3.wav');	// E
+const C4 = new Audio('./sounds/C4.wav');	// R
+const D4 = new Audio('./sounds/D4.wav');	// T
+const E4 = new Audio('./sounds/E4.wav');	// Y
+const F4 = new Audio('./sounds/F4.wav');	// U
+const G4 = new Audio('./sounds/G4.wav');	// I
+const A4 = new Audio('./sounds/A4.wav');	// O
+const B4 = new Audio('./sounds/B4.wav');	// P
 
-// Y
-    const E4 = new Audio('./sounds/E4.wav');
-
-// U
-    const F4 = new Audio('./sounds/F4.wav');
-
-// I
-    const G4 = new Audio('./sounds/G4.wav');
-
-// O
-    const A4 = new Audio('./sounds/A4.wav');
-
-// P
-    const B4 = new Audio('./sounds/B4.wav');
-
-
-// 2
-    const G3sharp = new Audio('./sounds/G3sharp.wav');
-
-// 3
-    const A3sharp = new Audio('./sounds/A3sharp.wav');
-
-// 5
-    const C4sharp = new Audio('./sounds/C4sharp.wav');
-
-// 6
-    const D4sharp = new Audio('./sounds/D4sharp.wav');
-
-// 8
-    const F4sharp = new Audio('./sounds/F4sharp.wav');
-
-// 9
-    const G4sharp = new Audio('./sounds/G4sharp.wav');
-
-// 0
-    const A4sharp = new Audio('./sounds/A4sharp.wav');
-
+const G3sharp = new Audio('./sounds/G3sharp.wav');	// 2
+const A3sharp = new Audio('./sounds/A3sharp.wav');	// 3
+const C4sharp = new Audio('./sounds/C4sharp.wav');	// 5
+const D4sharp = new Audio('./sounds/D4sharp.wav');	// 6
+const F4sharp = new Audio('./sounds/F4sharp.wav');	// 8
+const G4sharp = new Audio('./sounds/G4sharp.wav');	// 9
+const A4sharp = new Audio('./sounds/A4sharp.wav');	// 0
 
 
 
@@ -280,14 +259,13 @@ playBtn.addEventListener('click', playRecording);
 
 
 // Functions
-function eventHandler(evt) {
 
-/*
+/* About eventHandler()
 THIS FUNCTION ACHIEVES THE FOLLOWING WANTED BEHAVIOR:
 
 If the user holds down a keyboard key -thus playing the corresponding sound once-, do not allow that same sound/animation to be played again until the user releases the key. 
 Neither by allowing the keydown event code to execute more than once before a keyup event occurs, nor by the user "doubling down" on a Xylophone key by using a different input method.
-i.e. the user clicking on a button while the corresponding keyboard key is being held down. (same thing when holding a tap on a button on screen).
+i.e. the user clicking on a button while the corresponding keyboard key is being held down. (same thing when holding a tap on a button on a touchscreen).
 
 Notice the ` code ` property being destructured "outside" before switching by the type of event even though click events do not contain a ` code ` property. This does not throw errors because
 by destructuring "outside", ` code ` actually becomes a property of the click event and it is initialized to undefined; We don't get any errors because ` code ` is not referenced/used at all 
@@ -295,6 +273,7 @@ in the click event switch case! the ` code ` property is only used by the ` keyd
 
 */
 
+function eventHandler(evt) {
 	const {type, code, currentTarget, timeStamp} = evt;
 	const {id} = currentTarget;
 	switch (type) {
