@@ -26,7 +26,7 @@ const sample1 = [
     },
     {
         code: "KeyP",
-        timeStamp: 334
+        timeStamp: 334.1
     },
     {
         code: "KeyQ",
@@ -42,7 +42,7 @@ const sample1 = [
     },
     {
         code: "KeyP",
-        timeStamp: 835
+        timeStamp: 835.1
     },
     {
         code: "KeyT",
@@ -58,7 +58,7 @@ const sample1 = [
     },
     {
         code: "KeyP",
-        timeStamp: 1336
+        timeStamp: 1336.1
     },
     {
         code: "KeyI",
@@ -66,7 +66,7 @@ const sample1 = [
     },
     {
         code: "KeyT",
-        timeStamp: 1509
+        timeStamp: 1509.1
     },
     {
         code: "KeyQ",
@@ -78,7 +78,7 @@ const sample1 = [
     },
     {
         code: "KeyI",
-        timeStamp: 1837
+        timeStamp: 1837.1
     }
 ];
 
@@ -192,6 +192,61 @@ const sample2 = [
         timeStamp: 2800
     }
 ];
+
+
+// Q
+    const G3 = new Audio('./sounds/G3.wav');
+
+// w
+    const A3= new Audio('./sounds/A3.wav');
+
+// E
+    const B3 = new Audio('./sounds/B3.wav');
+
+// R
+    const C4 = new Audio('./sounds/C4.wav');
+
+// T
+    const D4 = new Audio('./sounds/D4.wav');
+
+// Y
+    const E4 = new Audio('./sounds/E4.wav');
+
+// U
+    const F4 = new Audio('./sounds/F4.wav');
+
+// I
+    const G4 = new Audio('./sounds/G4.wav');
+
+// O
+    const A4 = new Audio('./sounds/A4.wav');
+
+// P
+    const B4 = new Audio('./sounds/B4.wav');
+
+
+// 2
+    const G3sharp = new Audio('./sounds/G3sharp.wav');
+
+// 3
+    const A3sharp = new Audio('./sounds/A3sharp.wav');
+
+// 5
+    const C4sharp = new Audio('./sounds/C4sharp.wav');
+
+// 6
+    const D4sharp = new Audio('./sounds/D4sharp.wav');
+
+// 8
+    const F4sharp = new Audio('./sounds/F4sharp.wav');
+
+// 9
+    const G4sharp = new Audio('./sounds/G4sharp.wav');
+
+// 0
+    const A4sharp = new Audio('./sounds/A4sharp.wav');
+
+
 
 
 // Event listeners
@@ -348,95 +403,110 @@ function playSound(code) {
 	setTimeout(() => btn.classList.remove('pressed'), 100);
 
 	// Audio playback
-	let audio;
 	switch (code) {
 
 		// Naturals
 		case 'KeyQ': {
-			audio = new Audio('./sounds/G3.wav');
+			G3.currentTime = 0;
+			G3.play();
 			break;
 		}
 
 		case 'KeyW': {
-			audio = new Audio('./sounds/A3.wav');
+			A3.currentTime = 0;
+			A3.play();
 			break;
 		}
 
 		case 'KeyE': {
-			audio = new Audio('./sounds/B3.wav');
+			B3.currentTime = 0;
+			B3.play();
 			break;
 		}
 
 		case 'KeyR': {
-			audio = new Audio('./sounds/C4.wav');
+			C4.currentTime = 0;
+			C4.play();
 			break;
 		}
 
 		case 'KeyT': {
-			audio = new Audio('./sounds/D4.wav');
+			D4.currentTime = 0;
+			D4.play();
 			break;
 		}
 
 		case 'KeyY': {
-			audio = new Audio('./sounds/E4.wav');
+			E4.currentTime = 0;
+			E4.play();
 			break;
 		}
 
 		case 'KeyU': {
-			audio = new Audio('./sounds/F4.wav');
+			F4.currentTime = 0;
+			F4.play();
 			break;
 		}
 
 		case 'KeyI': {
-			audio = new Audio('./sounds/G4.wav');
+			G4.currentTime = 0;
+			G4.play();
 			break;
 		}
 
 		case 'KeyO': {
-			audio = new Audio('./sounds/A4.wav');
+			A4.currentTime = 0;
+			A4.play();
 			break;
 		}
 
 		case 'KeyP': {
-			audio = new Audio('./sounds/B4.wav');
+			B4.currentTime = 0;
+			B4.play();
 			break;
 		}
 
 		// Sharps
 		case 'Digit2': {
-			audio = new Audio('./sounds/G3sharp.wav');
+			G3sharp.currentTime = 0;
+			G3sharp.play();
 			break;
 		}
 
 		case 'Digit3': {
-			audio = new Audio('./sounds/A3sharp.wav');
+			A3sharp.currentTime = 0;
+			A3sharp.play();
 			break;
 		}
 
 		case 'Digit5': {
-			audio = new Audio('./sounds/C4sharp.wav');
+			C4sharp.currentTime = 0;
+			C4sharp.play();
 			break;
 		}
 
 		case 'Digit6': {
-			audio = new Audio('./sounds/D4sharp.wav');
+			D4sharp.currentTime = 0;
+			D4sharp.play();
 			break;
 		}
 
 		case 'Digit8': {
-			audio = new Audio('./sounds/F4sharp.wav');
+			F4sharp.currentTime = 0;
+			F4sharp.play();
 			break;
 		}
 
 		case 'Digit9': {
-			audio = new Audio('./sounds/G4sharp.wav');
+			G4sharp.currentTime = 0;
+			G4sharp.play();
 			break;
 		}
 
 		case 'Digit0': {
-			audio = new Audio('./sounds/A4sharp.wav');
+			A4sharp.currentTime = 0;
+			A4sharp.play();
 			break;
 		}
 	} 
-	audio.play();
 }
