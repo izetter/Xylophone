@@ -4,12 +4,18 @@ html {
 }
 
 body {
-	background-color: #daebec;
-	/* background-color: #ecdada; */
-	/* background-color: #e2daec; */
+	/* background-color: #daebec; */
+	background-color: #e7f2f3;
+	/* background-color : #5ca8af; */
 	text-align: center;
 }
 
+p,
+button {
+	user-select: none;
+	/* -moz-user-select: none; */
+	/* -webkit-user-select: none;  */
+}
 
 /********** header and control buttons *********/
 
@@ -22,16 +28,17 @@ header {
 
 h1 {
 	color: #39a5c9;
-	/* color: #2d8baa; */
+	/* color: #1d5466; */
 	font-family: 'Arial', sans-serif;
 	font-size: 5rem;
 	margin: 0 10% 0 0;
-	/* text-shadow: 2px 2px #DA0463; */
+	text-shadow: 1px 1px 4px #afafaf;
 }
 
 button {
 	border: 2px solid;
 	background-color: transparent;
+	/* background-color: #e6e6e6; */
 	font-size: 1.1rem;
 	margin: 3px;
 	outline: transparent;
@@ -97,9 +104,9 @@ button:active {
 }
 
 
-/************* main and keys **************/
+/************* keys **************/
 
-main {
+#wrapper {
 	margin-top: 10vh;
 	padding-top: 23vh;
 	position: relative;
@@ -149,6 +156,7 @@ main {
 	margin-bottom: 20%;
 	margin-top: 0;
 	text-shadow: 0 1px 3px rgba(12, 12, 12, .5);
+	/* background-clip: text; */
   	-webkit-background-clip: text;
     /* -moz-background-clip: text; */
 }
@@ -269,7 +277,7 @@ main {
 }
 
 .social-icon {
-    opacity: .4;
+    opacity: .35;
     width: 30px;
 	position: absolute;
 	bottom: 10px;

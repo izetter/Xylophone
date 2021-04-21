@@ -1,0 +1,14 @@
+{
+    "name": "Xylophone",
+    "short_name": "Xylophone",
+    "icons": [
+        {
+            "src": "images/google-touch-icon-512x512.png",
+            "sizes": "512x512"
+        }
+    ],
+    "theme_color": "#5ca8af",
+    "background_color": "#5ca8af",
+    "display": "standalone",
+    "orientation": "landscape"
+}
