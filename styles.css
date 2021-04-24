@@ -111,20 +111,22 @@ button:active {
 /************* keys **************/
 
 #wrapper {
-	margin-top: 10vh;
+	margin-top: 6vh;
 	padding-top: 23vh;
 	position: relative;
+	margin-left: 0.4vw;
+	margin-right: 0.4vw;
 }
 
 #naturals {
 	display: flex;
-	height: 45vh;
+	height: 49vh;
 	justify-content: center;
 }
 
 #sharps {
 	display: flex;
-	height: 45vh;
+	height: 49vh;
 	justify-content: center;
 	pointer-events: none;
 	position: absolute;
@@ -276,7 +278,7 @@ button:active {
 	text-decoration: none;
 	opacity: .55;
 	position: absolute;
-	bottom: 8px;
+	bottom: 7px;
 	left: 10px;
 }
 
@@ -296,35 +298,35 @@ button:active {
 
 /* Media Queries */
 
-@media screen and (max-width: 1920px) {
+@media screen and (max-width: 1023px) {
 
-	h1,
-	a {
+	h1 {
 		display: none;
 	}
 
 	header > div {
 		position: fixed;
-		bottom: .5vh;
-		right: .5vh;
+		bottom: 1vh;
+		right: 1vh;
 		z-index: 1;
-		/* transform: scale(0.7); */
 		/* display: none; */
 	}
 
 	button {
-		/* margin: 0; */
-		font-size: 0.8rem;
-		padding: 3px 6px;
-		margin: 2px;
+		font-size: min(1rem, 3.5vh);
+		padding: 6px 10px;
 	}
 
-	html {
-		/* border: 2px solid red; */
-		margin: 0;
-		padding: 0;
-		/* overflow-y: hidden; */
-		/* overflow-x: hidden; */
+	.name {
+		font-size: .7rem;
+		bottom: 8px;
+		left: calc(50% + 5px);
+	}
+
+	.social-icon {
+		right: 50%;
+		width: 16px;
+		bottom: 8px;
 	}
 
 	#wrapper {
@@ -341,6 +343,16 @@ button:active {
 		height: 60vh;
 	}
 
+}
 
+@media screen and (max-width: 1365px) {
+
+	.key > p:last-child {
+		display: none;
+	}
+
+	.key > p:first-child {
+		font-size: 1rem;
+	}
 
 }
