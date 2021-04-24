@@ -12,185 +12,185 @@ const playBtn = document.querySelector('.play');
 const playSampleBtn = document.querySelector('.sample');
 const keyBindings = document.querySelectorAll('.key > p');
 const sample1 = [
-    {
-        code: "KeyE",
-        timeStamp: 0
-    },
-    {
-        code: "KeyQ",
-        timeStamp: 167
-    },
-    {
-        code: "KeyY",
-        timeStamp: 334
-    },
-    {
-        code: "KeyP",
-        timeStamp: 334.1
-    },
-    {
-        code: "KeyQ",
-        timeStamp: 501
-    },
-    {
-        code: "KeyT",
-        timeStamp: 668
-    },
-    {
-        code: "KeyY",
-        timeStamp: 835
-    },
-    {
-        code: "KeyP",
-        timeStamp: 835.1
-    },
-    {
-        code: "KeyT",
-        timeStamp: 1002
-    },
-    {
-        code: "KeyQ",
-        timeStamp: 1169
-    },
-    {
-        code: "KeyY",
-        timeStamp: 1336
-    },
-    {
-        code: "KeyP",
-        timeStamp: 1336.1
-    },
-    {
-        code: "KeyI",
-        timeStamp: 1509
-    },
-    {
-        code: "KeyT",
-        timeStamp: 1509.1
-    },
-    {
-        code: "KeyQ",
-        timeStamp: 1670
-    },
-    {
-        code: "KeyT",
-        timeStamp: 1837
-    },
-    {
-        code: "KeyI",
-        timeStamp: 1837.1
-    }
+	{
+		code: "KeyE",
+		timeStamp: 0
+	},
+	{
+		code: "KeyQ",
+		timeStamp: 167
+	},
+	{
+		code: "KeyY",
+		timeStamp: 334
+	},
+	{
+		code: "KeyP",
+		timeStamp: 334.1
+	},
+	{
+		code: "KeyQ",
+		timeStamp: 501
+	},
+	{
+		code: "KeyT",
+		timeStamp: 668
+	},
+	{
+		code: "KeyY",
+		timeStamp: 835
+	},
+	{
+		code: "KeyP",
+		timeStamp: 835.1
+	},
+	{
+		code: "KeyT",
+		timeStamp: 1002
+	},
+	{
+		code: "KeyQ",
+		timeStamp: 1169
+	},
+	{
+		code: "KeyY",
+		timeStamp: 1336
+	},
+	{
+		code: "KeyP",
+		timeStamp: 1336.1
+	},
+	{
+		code: "KeyI",
+		timeStamp: 1509
+	},
+	{
+		code: "KeyT",
+		timeStamp: 1509.1
+	},
+	{
+		code: "KeyQ",
+		timeStamp: 1670
+	},
+	{
+		code: "KeyT",
+		timeStamp: 1837
+	},
+	{
+		code: "KeyI",
+		timeStamp: 1837.1
+	}
 ];
 
 const sample2 = [
-    {
-        code: "KeyR",
-        timeStamp: 0
-    },
-    {
-        code: "Digit6",
-        timeStamp: 0
-    },
-    {
-        code: "KeyI",
-        timeStamp: 0
-    },
-    {
-        code: "KeyR",
-        timeStamp: 400
-    },
-    {
-        code: "KeyI",
-        timeStamp: 400
-    },
-    {
-        code: "Digit0",
-        timeStamp: 400
-    },
-    {
-        code: "KeyR",
-        timeStamp: 800
-    },
-    {
-        code: "KeyU",
-        timeStamp: 800
-    },
-    {
-        code: "KeyO",
-        timeStamp: 800
-    },
-    {
-        code: "KeyR",
-        timeStamp: 1400
-    },
-    {
-        code: "Digit6",
-        timeStamp: 1400
-    },
-    {
-        code: "KeyI",
-        timeStamp: 1400
-    },
-    {
-        code: "KeyR",
-        timeStamp: 1800
-    },
-    {
-        code: "KeyI",
-        timeStamp: 1800
-    },
-    {
-        code: "Digit0",
-        timeStamp: 1800
-    },
-    {
-        code: "KeyR",
-        timeStamp: 2200
-    },
-    {
-        code: "KeyI",
-        timeStamp: 2200
-    },
-    {
-        code: "Digit0",
-        timeStamp: 2200
-    },
-    {
-        code: "KeyR",
-        timeStamp: 2400
-    },
-    {
-        code: "KeyU",
-        timeStamp: 2400
-    },
-    {
-        code: "KeyO",
-        timeStamp: 2400
-    },
-    {
-        code: "KeyR",
-        timeStamp: 2600
-    },
-    {
-        code: "KeyU",
-        timeStamp: 2600
-    },
-    {
-        code: "KeyO",
-        timeStamp: 2600
-    },
-    {
-        code: "KeyR",
-        timeStamp: 2800
-    },
-    {
-        code: "Digit6",
-        timeStamp: 2800
-    },
-    {
-        code: "KeyI",
-        timeStamp: 2800
-    }
+	{
+		code: "KeyR",
+		timeStamp: 0
+	},
+	{
+		code: "Digit6",
+		timeStamp: 0.1
+	},
+	{
+		code: "KeyI",
+		timeStamp: 0.2
+	},
+	{
+		code: "KeyR",
+		timeStamp: 400
+	},
+	{
+		code: "KeyI",
+		timeStamp: 400.1
+	},
+	{
+		code: "Digit0",
+		timeStamp: 400.2
+	},
+	{
+		code: "KeyR",
+		timeStamp: 800
+	},
+	{
+		code: "KeyU",
+		timeStamp: 800.1
+	},
+	{
+		code: "KeyO",
+		timeStamp: 800.2
+	},
+	{
+		code: "KeyR",
+		timeStamp: 1400
+	},
+	{
+		code: "Digit6",
+		timeStamp: 1400.1
+	},
+	{
+		code: "KeyI",
+		timeStamp: 1400.2
+	},
+	{
+		code: "KeyR",
+		timeStamp: 1800
+	},
+	{
+		code: "KeyI",
+		timeStamp: 1800.1
+	},
+	{
+		code: "Digit0",
+		timeStamp: 1800.2
+	},
+	{
+		code: "KeyR",
+		timeStamp: 2200
+	},
+	{
+		code: "KeyI",
+		timeStamp: 2200.1
+	},
+	{
+		code: "Digit0",
+		timeStamp: 2200.2
+	},
+	{
+		code: "KeyR",
+		timeStamp: 2400
+	},
+	{
+		code: "KeyU",
+		timeStamp: 2400.1
+	},
+	{
+		code: "KeyO",
+		timeStamp: 2400.2
+	},
+	{
+		code: "KeyR",
+		timeStamp: 2600
+	},
+	{
+		code: "KeyU",
+		timeStamp: 2600.1
+	},
+	{
+		code: "KeyO",
+		timeStamp: 2600.2
+	},
+	{
+		code: "KeyR",
+		timeStamp: 2800
+	},
+	{
+		code: "Digit6",
+		timeStamp: 2800.1
+	},
+	{
+		code: "KeyI",
+		timeStamp: 2800.2
+	}
 ];
 
 /* 
@@ -208,7 +208,7 @@ Perhaps, a more elegant solution would be to leave the code as it was before com
 */
 
 const G3 = new Audio('./sounds/G3.wav');	// Q
-const A3= new Audio('./sounds/A3.wav');		// W
+const A3 = new Audio('./sounds/A3.wav');	// W
 const B3 = new Audio('./sounds/B3.wav');	// E
 const C4 = new Audio('./sounds/C4.wav');	// R
 const D4 = new Audio('./sounds/D4.wav');	// T
@@ -244,7 +244,7 @@ for (let key of keys) {
 playSampleBtn.addEventListener('click', playSample);
 
 helpBtn.addEventListener('click', () => {
-    helpBtn.classList.toggle('help-clicked')
+	helpBtn.classList.toggle('help-clicked')
 	for (let element of keyBindings) {
 		element.classList.toggle('hidden');
 	}
@@ -252,7 +252,7 @@ helpBtn.addEventListener('click', () => {
 
 recBtn.addEventListener('click', () => {
 	recBtn.classList.toggle('rec-clicked');
-    record();
+	record();
 });
 
 playBtn.addEventListener('click', playRecording);
@@ -274,8 +274,8 @@ in the click event switch case! the ` code ` property is only used by the ` keyd
 */
 
 function eventHandler(evt) {
-	const {type, code, currentTarget, timeStamp} = evt;
-	const {id} = currentTarget;
+	const { type, code, currentTarget, timeStamp } = evt;
+	const { id } = currentTarget;
 	switch (type) {
 
 		case 'click': {
@@ -283,7 +283,7 @@ function eventHandler(evt) {
 			if (!pressedKeys[id]) {
 				playSound(id);
 				if (isRecording) {
-					const sound = {code: id, timeStamp};
+					const sound = { code: id, timeStamp };
 					recording.push(sound);
 				}
 			}
@@ -295,7 +295,7 @@ function eventHandler(evt) {
 				playSound(code)
 				pressedKeys[code] = true;
 				if (isRecording) {
-					const sound = {code, timeStamp};
+					const sound = { code, timeStamp };
 					recording.push(sound);
 				}
 			}
@@ -321,12 +321,12 @@ function record() {
 			playback[0].timeStamp = 0;
 			playBtn.disabled = false;
 		}
-        playSampleBtn.disabled = false;
+		playSampleBtn.disabled = false;
 		isRecording = false;
 	} else {
-        if (recording.length !== 0) recording.length = 0;
+		if (recording.length !== 0) recording.length = 0;
 		if (!playBtn.disabled) playBtn.disabled = true;
-        playSampleBtn.disabled = true;
+		playSampleBtn.disabled = true;
 		isRecording = true;
 	}
 }
@@ -340,14 +340,14 @@ function playRecording() {
 		}, sound.timeStamp);
 	}
 
-    // Disable the REC button and make the play button look active while recorded melody is playing
+	// Disable the REC button and make the play button look active while recorded melody is playing
 	let playbackDuration = playback[playback.length - 1].timeStamp;
-    playBtn.classList.toggle('play-clicked');
+	playBtn.classList.toggle('play-clicked');
 	recBtn.disabled = true;
-    setTimeout(() => {
-        playBtn.classList.toggle('play-clicked');
-        recBtn.disabled = false;
-    }, playbackDuration);
+	setTimeout(() => {
+		playBtn.classList.toggle('play-clicked');
+		recBtn.disabled = false;
+	}, playbackDuration);
 }
 
 function playSample() {
@@ -368,10 +368,10 @@ function playSample() {
 	let sampleDuration = sample[sample.length - 1].timeStamp;
 	playSampleBtn.disabled = true;
 	recBtn.disabled = true;
-    setTimeout(() => {
-        playSampleBtn.disabled = false;
-        recBtn.disabled = false;
-    }, sampleDuration);
+	setTimeout(() => {
+		playSampleBtn.disabled = false;
+		recBtn.disabled = false;
+	}, sampleDuration);
 }
 
 function playSound(code) {
@@ -487,5 +487,5 @@ function playSound(code) {
 			A4sharp.play();
 			break;
 		}
-	} 
+	}
 }

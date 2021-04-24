@@ -17,6 +17,10 @@ button {
 	/* -webkit-user-select: none;  */
 }
 
+#mobile-controls {
+	display: none;
+}
+
 /********** header and control buttons *********/
 
 header {
@@ -287,4 +291,56 @@ button:active {
 .name:hover,
 .social-icon:hover {
 	opacity: .85;
+}
+
+
+/* Media Queries */
+
+@media screen and (max-width: 1920px) {
+
+	h1,
+	a {
+		display: none;
+	}
+
+	header > div {
+		position: fixed;
+		bottom: .5vh;
+		right: .5vh;
+		z-index: 1;
+		/* transform: scale(0.7); */
+		/* display: none; */
+	}
+
+	button {
+		/* margin: 0; */
+		font-size: 0.8rem;
+		padding: 3px 6px;
+		margin: 2px;
+	}
+
+	html {
+		/* border: 2px solid red; */
+		margin: 0;
+		padding: 0;
+		/* overflow-y: hidden; */
+		/* overflow-x: hidden; */
+	}
+
+	#wrapper {
+		margin-top: -20px;
+		padding-top: 30vh;
+		position: relative;
+	}
+	
+	#naturals {
+		height: 60vh;
+	}
+	
+	#sharps {
+		height: 60vh;
+	}
+
+
+
 }
