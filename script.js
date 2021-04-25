@@ -237,9 +237,13 @@ document.addEventListener('keyup', (evt) => {
 	if (/[QWERTYUIOP2356890]/i.test(evt.key) && evt.key.length === 1) eventHandler(evt);
 })
 
-for (let key of keys) {
-	key.addEventListener('click', (evt) => eventHandler(evt))
-}
+// for (let key of keys) {
+	// key.addEventListener('click', (evt) => eventHandler(evt))
+// }
+
+document.addEventListener('touchstart', (evt) => {
+	console.log(evt);
+})
 
 playSampleBtn.addEventListener('click', playSample);
 
