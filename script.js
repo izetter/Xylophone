@@ -241,10 +241,12 @@ document.addEventListener('keyup', (evt) => {
 	// key.addEventListener('click', (evt) => eventHandler(evt))
 // }
 
-document.addEventListener('touchstart', (evt) => {
-	eventHandler(evt);
-	alert(evt);
-})
+for (let key of keys) {
+	key.addEventListener('touchstart', () => {
+		// eventHandler(evt);
+		alert(evt.currentTarget.id);
+	})
+}
 
 playSampleBtn.addEventListener('click', playSample);
 
@@ -284,7 +286,7 @@ function eventHandler(evt) {
 	switch (type) {
 
 		case 'touchstart': {
-			alert(evt);
+			// alert(evt);
 			// The outer if statement here is to prevent 'click' while 'keydown' is happening.
 			if (!pressedKeys[id]) {
 				playSound(id);
