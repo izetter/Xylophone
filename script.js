@@ -242,7 +242,7 @@ document.addEventListener('keyup', (evt) => {
 // }
 
 document.addEventListener('touchstart', (evt) => {
-	console.log(evt);
+	eventHandler(evt);
 })
 
 playSampleBtn.addEventListener('click', playSample);
@@ -281,6 +281,18 @@ function eventHandler(evt) {
 	const { type, code, currentTarget, timeStamp } = evt;
 	const { id } = currentTarget;
 	switch (type) {
+
+		case 'touchstart': {
+			// The outer if statement here is to prevent 'click' while 'keydown' is happening.
+			if (!pressedKeys[id]) {
+				playSound(id);
+				if (isRecording) {
+					const sound = { code: id, timeStamp };
+					recording.push(sound);
+				}
+			}
+			break;
+		}
 
 		case 'click': {
 			// The outer if statement here is to prevent 'click' while 'keydown' is happening.
