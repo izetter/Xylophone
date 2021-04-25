@@ -244,7 +244,7 @@ document.addEventListener('keyup', (evt) => {
 for (let key of keys) {
 	key.addEventListener('touchstart', () => {
 		// eventHandler(evt);
-		alert(evt.currentTarget.id);
+		alert(evt.currentTarget);
 	})
 }
 
