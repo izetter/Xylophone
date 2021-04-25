@@ -162,7 +162,7 @@ button:active {
 	margin-bottom: 20%;
 	margin-top: 0;
 	text-shadow: 0 1px 3px rgba(12, 12, 12, .5);
-	/* background-clip: text; */
+	background-clip: text;
   	-webkit-background-clip: text;
     /* -moz-background-clip: text; */
 }
@@ -309,7 +309,6 @@ button:active {
 		bottom: 1vh;
 		right: 1vh;
 		z-index: 1;
-		/* display: none; */
 	}
 
 	button {

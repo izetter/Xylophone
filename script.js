@@ -237,15 +237,8 @@ document.addEventListener('keyup', (evt) => {
 	if (/[QWERTYUIOP2356890]/i.test(evt.key) && evt.key.length === 1) eventHandler(evt);
 })
 
-// for (let key of keys) {
-	// key.addEventListener('click', (evt) => eventHandler(evt))
-// }
-
 for (let key of keys) {
-	key.addEventListener('touchstart', () => {
-		// eventHandler(evt);
-		alert(evt.currentTarget);
-	})
+	key.addEventListener('click', (evt) => eventHandler(evt))
 }
 
 playSampleBtn.addEventListener('click', playSample);
@@ -284,19 +277,6 @@ function eventHandler(evt) {
 	const { type, code, currentTarget, timeStamp } = evt;
 	const { id } = currentTarget;
 	switch (type) {
-
-		case 'touchstart': {
-			// alert(evt);
-			// The outer if statement here is to prevent 'click' while 'keydown' is happening.
-			if (!pressedKeys[id]) {
-				playSound(id);
-				if (isRecording) {
-					const sound = { code: id, timeStamp };
-					recording.push(sound);
-				}
-			}
-			break;
-		}
 
 		case 'click': {
 			// The outer if statement here is to prevent 'click' while 'keydown' is happening.
