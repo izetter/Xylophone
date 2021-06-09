@@ -271,7 +271,7 @@ button:active {
 }
 
 
-/********* bottom links and portrait message *********/
+/********* bottom links and overlay message *********/
 
 .name {
 	font: .9rem 'Courier New', Courier, monospace;
@@ -295,26 +295,26 @@ button:active {
 	opacity: .85;
 }
 
-#portrait {
+#overlay {
+	align-items: flex-start;
 	background-color: cadetblue;
-	position: absolute;
-	width: 100vw;
-	height:	100vh;
-	top: 0;
-	left: 0;
-	z-index: 2;
 	display: flex;
+	height:	100vh;
 	justify-content: center;
-	align-items: center;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100vw;
+	z-index: 2;
 }
 
-#portrait > p {
-	font: 1rem 'Arvo';
+#overlay > p {
 	background-color: rgb(255, 155, 170);
+	border-radius: 15px;
+	font: 1rem 'Arvo';
 	line-height: 1.4;
 	margin: 10%;
 	padding: 5% ;
-	border-radius: 15px;
 }
 
 
@@ -378,21 +378,23 @@ button:active {
 
 }
 
-/* @media screen and (orientation: portrait) {
-	#portrait {
-		display: initial;
-	}
-} */
-
-
 @media screen and (orientation: landscape) and (min-width: 1024px) {
-	#portrait {
+	#overlay {
 		display: none;
 	}
 }
 
+/* Purpose of the following media query:
+
+When launching from the Home Screen (PWA), the webmanifest sets the orientation to landscape and the display mode to fullscreen, enabling a proper view of the Xylophone.
+Which means that the overlay must not appear even though the width will usually be smaller than 1024px.
+
+Could have also used a combination of JSmedia queries (matchMedia) and user agent detetion with navigator.userAgent, but the latter is not recomended and deprecated.
+
+The effects of this media query cannot be observed from the desktop browser unless using a really small monitor in fullscreen! must open PWA from Home Screen in a phone!
+*/
 @media screen and (display-mode: fullscreen) and (orientation: landscape) and (max-width: 1023px) {
-	#portrait {
+	#overlay {
 		display: none;
 	}
 }
