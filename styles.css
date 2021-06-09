@@ -5,10 +5,10 @@ html {
 
 body {
 	/* background-color: #daebec; */
-	background-color: #e7f2f3;
 	/* background-color : #5ca8af; */
+	background-color: #e7f2f3;
 	text-align: center;
-	overflow-y: hidden;
+	overflow-y: hidden;		/* Hidden overflow to prevent small swipe possible when overlay is visible on mobile */
 }
 
 p,
@@ -383,27 +383,19 @@ button:active {
 	#overlay {
 		display: none;
 	}
-
-	body {
-		overflow-y: unset;
-	}
 }
 
-/* Purpose of the following media query:
+/* PURPOSE OF THE FOLLOWING MEDIA QUERY:
 
-When launching from the Home Screen (PWA), the webmanifest sets the orientation to landscape and the display mode to fullscreen, enabling a proper view of the Xylophone.
-Which means that the overlay must not appear even though the width will usually be smaller than 1024px.
+When launching from the Home Screen, the webmanifest sets the orientation to landscape and the display mode to fullscreen, enabling a proper view of the Xylophone.
+This means that the overlay must not appear even though the width will usually be smaller than 1024px.
 
-Could have also used a combination of JSmedia queries (matchMedia) and user agent detetion with navigator.userAgent, but the latter is not recomended and deprecated.
+Could have also used a combination of JS media queries (matchMedia) and user agent detection with navigator.userAgent, but the latter is not recomended and deprecated.
 
-The effects of this media query cannot be observed from the desktop browser unless using a really small monitor in fullscreen! must open PWA from Home Screen in a phone!
+The effects of this media query cannot be observed from the desktop browser unless literally using a phone-sized monitor with the browser in fullscreen! must open PWA from Home Screen in a phone!
 */
 @media screen and (display-mode: fullscreen) and (orientation: landscape) and (max-width: 1023px) {
 	#overlay {
 		display: none;
-	}
-
-	body {
-		overflow-y: unset;
 	}
 }
