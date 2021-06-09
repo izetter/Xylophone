@@ -283,8 +283,8 @@ button:active {
 }
 
 .social-icon {
-    opacity: .35;
     width: 30px;
+    opacity: .35;
 	position: absolute;
 	bottom: 10px;
 	right: 10px;
@@ -315,10 +315,6 @@ button:active {
 	margin: 10%;
 	padding: 5% ;
 	border-radius: 15px;
-}
-
-#portrait {
-	/* display: none; */
 }
 
 
@@ -382,8 +378,21 @@ button:active {
 
 }
 
-@media screen and (orientation: portrait) {
+/* @media screen and (orientation: portrait) {
 	#portrait {
 		display: initial;
+	}
+} */
+
+
+@media screen and (orientation: landscape) and (min-width: 1024px) {
+	#portrait {
+		display: none;
+	}
+}
+
+@media screen and (display-mode: fullscreen) and (orientation: landscape) and (max-width: 1023px) {
+	#portrait {
+		display: none;
 	}
 }
