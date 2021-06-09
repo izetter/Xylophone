@@ -495,9 +495,5 @@ const mobileOverlay = document.querySelector('div#portrait');
 screen.orientation.addEventListener('change', () => {
 	if (window.matchMedia("(orientation: landscape)").matches && /Android|webOS|iPhone|iPod|Opera Mini/i.test(navigator.userAgent)) {
 		mobileOverlay.style.display = 'initial';
-		alert('true');
-		alert(navigator.userAgent);
-	} else {
-		alert(navigator.userAgent);
 	}
 })
