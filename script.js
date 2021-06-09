@@ -489,3 +489,9 @@ function playSound(code) {
 		}
 	}
 }
+
+
+const mobileOverlay = document.querySelector('div#portrait');
+if (/Android|webOS|iPhone|iPod|Opera Mini/i.test(navigator.userAgent)) {
+	mobileOverlay.style.display = 'initial';
+}
