@@ -8,6 +8,7 @@ body {
 	background-color: #e7f2f3;
 	/* background-color : #5ca8af; */
 	text-align: center;
+	overflow-y: hidden;
 }
 
 p,
@@ -382,6 +383,10 @@ button:active {
 	#overlay {
 		display: none;
 	}
+
+	body {
+		overflow-y: unset;
+	}
 }
 
 /* Purpose of the following media query:
@@ -396,5 +401,9 @@ The effects of this media query cannot be observed from the desktop browser unle
 @media screen and (display-mode: fullscreen) and (orientation: landscape) and (max-width: 1023px) {
 	#overlay {
 		display: none;
+	}
+
+	body {
+		overflow-y: unset;
 	}
 }
