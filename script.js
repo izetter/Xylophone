@@ -491,6 +491,9 @@ function playSound(code) {
 }
 
 const mobileOverlay = document.querySelector('div#portrait');
-if (window.matchMedia("(orientation: landscape)").matches && /Android|webOS|iPhone|iPod|Opera Mini/i.test(navigator.userAgent)) {
-	mobileOverlay.style.display = 'initial';
-}
+
+screen.orientation.addEventListener('change', () => {
+	if (window.matchMedia("(orientation: landscape)").matches && /Android|webOS|iPhone|iPod|Opera Mini/i.test(navigator.userAgent)) {
+		mobileOverlay.style.display = 'initial';
+	}
+})
