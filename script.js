@@ -193,20 +193,6 @@ const sample2 = [
 	}
 ];
 
-/* 
-
-The variables below were originally not necesary until the site was deployed with commit e4ba981 (tag: "working"). For reasons yet to be known, instead of caching the audio files,
-the browser kept downloading the corresponding audio file every single time it needed to be played, which resulted in janky audio playback.
-This of course wasn't an issue while building because files were available locally.
-
-The solution, which was implemented on commit a0cbb67 (tag: "test1"), was to have the audio objects readily availabe by creating these 17 audio object variables and having the
-playSound() play the corresponding one instead of creating a single audio object variable which was reassgined to the proper audio file every time playSound() was executed.
-The solution also required to set an audio's currentTime to zero immediately before every time the audio needed to be played.
-
-Perhaps, a more elegant solution would be to leave the code as it was before commit a0cbb67 (tag: "test1") and find a way to force the browser to cache and use the cached audio files.
-
-*/
-
 const G3 = new Audio('./sounds/G3.wav');	// Q
 const A3 = new Audio('./sounds/A3.wav');	// W
 const B3 = new Audio('./sounds/B3.wav');	// E
@@ -225,7 +211,6 @@ const D4sharp = new Audio('./sounds/D4sharp.wav');	// 6
 const F4sharp = new Audio('./sounds/F4sharp.wav');	// 8
 const G4sharp = new Audio('./sounds/G4sharp.wav');	// 9
 const A4sharp = new Audio('./sounds/A4sharp.wav');	// 0
-
 
 
 // Event listeners
